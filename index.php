@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body>
+        <div id="banner"></div>
         <div id="header" class="header"></div>
         <div class="booking">
             <div class="option">
@@ -41,5 +43,9 @@
                 </div>
             </div>
         </div>
+
+        <footer>
+            <p>All rights reserved</p>
+        </footer>
     </body>
 </html>
