@@ -1,0 +1,21 @@
+.bookingEngine{
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 3px;
+    padding: 15px;
+    min-height:120px;
+
+}
+
+.selectTime{
+    border-top: 1px solid #c0c0c0;
+    border-bottom: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+    float: left;
+    position: relative;
+    width: 25%;
+}
+
+.selectRoom{
+    border-left: 1px solid #c0c0c0;
+    border-radius: 3px 0 0 3px;
+}
