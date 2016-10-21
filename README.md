@@ -19,3 +19,6 @@ The detailed information is available in the use case docx file. The 8 current u
   5. Login
   6. Logout
   7. Create new user
+  
+ ##*Changes
+ ELIMINATE NEW USER!!
