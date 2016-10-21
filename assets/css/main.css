@@ -13,7 +13,7 @@ li{
 }
 
 #banner {
-    background-image: url(Images/bar_background.png);
+    background-image: url(../img/bar_background.png);
     background-repeat: no-repeat;
     background-size: cover;
     height: 200px;
@@ -27,5 +27,5 @@ footer {
     border: 3px solid #E3E3E3;
     text-align: center;
     color: #fff;
-    background-image: url(Images/bar_background.png);
+    background-image: url(../img/bar_background.png);
 }
