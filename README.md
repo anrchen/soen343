@@ -21,4 +21,4 @@ The detailed information is available in the use case docx file. The 8 current u
   7. Create new user
   
  ##*Changes
- ELIMINATE NEW USER!!
+ - Use case "Eliminate New User" has been removed. Needs to be reviewed! (Removal of unecessary functionalities)
