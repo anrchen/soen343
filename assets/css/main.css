@@ -1,10 +1,24 @@
+/***************************************
+	Main.css
+****************************************/
+
+/** index.php **/
+#banner{
+	text-align: center;
+	font-size: 40px;
+}
+
 .bookingEngine{
     background-color: rgba(0,0,0,0.7);
     border-radius: 3px;
     padding: 15px;
     min-height:120px;
-    float:left;
+    float:center;
     width:auto;
+}
+
+.bookingEngine p{
+    color: #fff;
 }
 
 li{
@@ -16,7 +30,7 @@ li{
     background-image: url(../img/bar_background.png);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 200px;
+    height: 100px;
 }
 
 footer {

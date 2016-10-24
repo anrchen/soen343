@@ -9,11 +9,10 @@
 		
     </head>
     <body>
-        <div id="banner"></div>
-        <div id="header" class="header"></div>
-        <div class="booking">
+        <div id="banner">Booking System</div>
+<!--          <div class="booking">
             <div class="option">
-<!--                <ul id="navigation" class="optionNavigation">-->
+              <ul id="navigation" class="optionNavigation">-->
 <!--                    <li>-->
 <!--                        <a id="bookRoom"></a>-->
 <!--                    </li>-->
@@ -21,10 +20,12 @@
 <!--                        <a id="searchRoomAvailability"></a>-->
 <!--                    </li>-->
 <!--                </ul>-->
+			
                 <div id="bookingEngine" class="bookingEngine">
                     <form id="bookRoomForm" autocomplete="false">
                         <div class="bookRoomDetail">
                             <div class="bookContent">
+								<p>Enter the desired room, time slot, and date</p>
                                 <ul style="list-style: none">
                                     <li class="selectRoom">
                                         <input id="room" class="requiredField" name="room" placeholder="Select Room"
@@ -46,7 +47,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            
         </div>
 
         <footer>
