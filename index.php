@@ -20,14 +20,24 @@
         <?php
             date_default_timezone_set('America/New_York'); //Eastern time
             $date= date_create('now'); //Creation of the date object, 'now' stands for current date
-            //example of adding days to the current date -> date_add($date,date_interval_create_from_date_string("40 days"));
-            $rooms = array("H908", "H432", "H843", "H123", "H732", "H320");
+
+            $rooms = array("H908", "H432", "H843", "H123", "H732", "H320"); //data structure for the rooms
             $bool_test = true; //A testing variable
         ?>
 
         <div class="container" style="margin-top:40px;">
-            <a id="prev_date" href="index.php?url=prev_date"><i class="fa fa-arrow-left" aria-hidden="true">Previous date</i></a>
-            <a id="next_date" href="index.php?url=next_date"><i class="fa fa-arrow-right" aria-hidden="true" style="float:right">Next date</i></a>
+            <a id="prev_date" href="index.php?date=prev_date"><i class="fa fa-arrow-left" aria-hidden="true">Previous date</i></a>
+            <a id="next_date" href="index.php?date=next_date"><i class="fa fa-arrow-right" aria-hidden="true" style="float:right">Next date</i></a>
+            <?php
+
+                if(isset($_GET['date'])){
+                    $new_date = $_GET['date'];
+                    if($new_date == 'next_date'){
+                       $date = date_add($date, date_interval_create_from_date_string("1 day"));
+                    }
+                }
+
+            ?>
             <h4 id="date"><?php echo date_format($date,"Y-m-d"); ?></h4>
             <table style="width:80%" align="center">
                 <tr>
