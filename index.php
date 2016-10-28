@@ -32,39 +32,60 @@
         <div class="container" style="margin-top:40px;">
 
             <?php
+                $date = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
                 $prev_date = date('Y-m-d', strtotime($date .' -1 day'));
                 $next_date = date('Y-m-d', strtotime($date .' +1 day'));
-
-                $new_date = date_format($new_date, 'Y-m-d');
-                $url = "index.php?date=" . $new_date;
-                echo
-                "<a id=\"prev_date\" href=\"$url\">
-                    <i class=\"fa fa-arrow-left\" aria-hidden=\"true\">
-                        Previous date
-                    </i>
-                 </a>";
-
-                echo
-                "<a id=\"next_date\" href=\"$url\">
-                    <i class=\"fa fa-arrow-right\" aria-hidden=\"true\" style=\"float:right\">
-                        Next date
-                    </i>
-                 </a>";
             ?>
+
+            <a id="previous_id" href="?date=<?=$prev_date;?>">
+                <i class="fa fa-arrow-left" aria-hidden="true">
+                    Previous
+                </i>
+            </a>
+            <a id="next_id" href="?date=<?=$next_date;?>">
+                <i class="fa fa-arrow-right" aria-hidden="true" style="float:right">
+                    Next
+                </i>
+            </a>
+
+
+            <?php
+
+
+//                $prev_date = date('Y-m-d', strtotime($date .' -1 day'));
+//                $next_date = date('Y-m-d', strtotime($date .' +1 day'));
+//
+//                $prev_url = "index.php?date=" .date_format($prev_date, 'Y-m-d');
+//                $next_url = "index.php?date=" .date_format($next_date, 'Y-m-d');
+//
+//                echo
+//                "<a id=\"prev_date\" href=\"$prev_url\">
+//                    <i class=\"fa fa-arrow-left\" aria-hidden=\"true\">
+//                        Previous date
+//                    </i>
+//                 </a>";
+//
+//                echo
+//                "<a id=\"next_date\" href=\"$next_url\">
+//                    <i class=\"fa fa-arrow-right\" aria-hidden=\"true\" style=\"float:right\">
+//                        Next date
+//                    </i>
+//                 </a>";
+//            ?>
 
 <!--            <a id="prev_date" href="index.php?date=prev_date"><i class="fa fa-arrow-left" aria-hidden="true">Previous date</i></a>-->
 <!--            <a id="next_date" href="index.php?date=next_date"><i class="fa fa-arrow-right" aria-hidden="true" style="float:right">Next date</i></a>-->
             <?php
 
-                if(isset($_GET['date']) & isset($_GET['new_date'])){
-                    $new_date = $_GET['new_date'];
-                    $date = $_GET['date'];
-                    if(strtotime($new_date)!=strtotime($date)){
-                       $date = $new_date;
-                    }
-                }
+            echo $date;
+                if(isset($_GET['next_id']) & isset($_GET['date'])){
 
+                    $date = new DateTime($next_date);
+                } else if (isset($_GET['previous_id']) & isset($_GET['date'])){
+                    $date = new DateTime($prev_date);
+                }
             ?>
+
             <h4 id="date"><?php echo date_format($date,"Y-m-d"); ?></h4>
             <table style="width:80%" align="center">
                 <tr>
