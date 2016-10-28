@@ -18,22 +18,49 @@
         <div id="banner">Booking System</div>
 
         <?php
-            date_default_timezone_set('America/New_York'); //Eastern time
-            $date= date_create('now'); //Creation of the date object, 'now' stands for current date
+            if(isset($_GET['date'])){
+                $date = new DateTime($_GET['date']); // If date is given by the url, go directly to that date
+            }else{
+                date_default_timezone_set('America/New_York'); //Eastern time
+                $date= date_create('now'); //Creation of the date object, 'now' stands for current date
+            }
 
             $rooms = array("H908", "H432", "H843", "H123", "H732", "H320"); //data structure for the rooms
             $bool_test = true; //A testing variable
         ?>
 
         <div class="container" style="margin-top:40px;">
-            <a id="prev_date" href="index.php?date=prev_date"><i class="fa fa-arrow-left" aria-hidden="true">Previous date</i></a>
-            <a id="next_date" href="index.php?date=next_date"><i class="fa fa-arrow-right" aria-hidden="true" style="float:right">Next date</i></a>
+
+            <?php
+                $prev_date = date('Y-m-d', strtotime($date .' -1 day'));
+                $next_date = date('Y-m-d', strtotime($date .' +1 day'));
+
+                $new_date = date_format($new_date, 'Y-m-d');
+                $url = "index.php?date=" . $new_date;
+                echo
+                "<a id=\"prev_date\" href=\"$url\">
+                    <i class=\"fa fa-arrow-left\" aria-hidden=\"true\">
+                        Previous date
+                    </i>
+                 </a>";
+
+                echo
+                "<a id=\"next_date\" href=\"$url\">
+                    <i class=\"fa fa-arrow-right\" aria-hidden=\"true\" style=\"float:right\">
+                        Next date
+                    </i>
+                 </a>";
+            ?>
+
+<!--            <a id="prev_date" href="index.php?date=prev_date"><i class="fa fa-arrow-left" aria-hidden="true">Previous date</i></a>-->
+<!--            <a id="next_date" href="index.php?date=next_date"><i class="fa fa-arrow-right" aria-hidden="true" style="float:right">Next date</i></a>-->
             <?php
 
-                if(isset($_GET['date'])){
-                    $new_date = $_GET['date'];
-                    if($new_date == 'next_date'){
-                       $date = date_add($date, date_interval_create_from_date_string("1 day"));
+                if(isset($_GET['date']) & isset($_GET['new_date'])){
+                    $new_date = $_GET['new_date'];
+                    $date = $_GET['date'];
+                    if(strtotime($new_date)!=strtotime($date)){
+                       $date = $new_date;
                     }
                 }
 
