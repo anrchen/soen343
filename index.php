@@ -75,7 +75,7 @@
             <hr>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                     <button class="btn btn-warning">Make a Reservation</button>
+                    <a href="make_reservation.php"><button class="btn btn-warning">Make a Reservation</button></a>
                      <button class="btn btn-info">Modify a Reservation</button>
                      <button class="btn btn-danger">Drop a Reservation</button>
                 </div>
