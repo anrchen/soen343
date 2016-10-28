@@ -18,27 +18,37 @@
         <div id="banner">Booking System</div>
 
         <?php
-            date_default_timezone_set('America/New_York'); //Eastern time
-            $date= date_create('now'); //Creation of the date object, 'now' stands for current date
+            if(isset($_GET['date'])){
+                $date = new DateTime($_GET['date']); // If date is given by the url, go directly to that date
+            }else{
+                date_default_timezone_set('America/New_York'); //Eastern time
+                $date= date_create('now'); //Creation of the date object, 'now' stands for current date
+            }
 
             $rooms = array("H908", "H432", "H843", "H123", "H732", "H320"); //data structure for the rooms
             $bool_test = true; //A testing variable
         ?>
 
         <div class="container" style="margin-top:40px;">
-            <a id="prev_date" href="index.php?date=prev_date"><i class="fa fa-arrow-left" aria-hidden="true">Previous date</i></a>
-            <a id="next_date" href="index.php?date=next_date"><i class="fa fa-arrow-right" aria-hidden="true" style="float:right">Next date</i></a>
+
             <?php
-
-                if(isset($_GET['date'])){
-                    $new_date = $_GET['date'];
-                    if($new_date == 'next_date'){
-                       $date = date_add($date, date_interval_create_from_date_string("1 day"));
-                    }
-                }
-
+                $date = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
+                $prev_date = date('Y-m-d', strtotime($date .' -1 day'));
+                $next_date = date('Y-m-d', strtotime($date .' +1 day'));
             ?>
-            <h4 id="date"><?php echo date_format($date,"Y-m-d"); ?></h4>
+
+            <a id="previous_id" href="?date=<?=$prev_date;?>">
+                <i class="fa fa-arrow-left" aria-hidden="true">
+                    Previous
+                </i>
+            </a>
+            <a id="next_id" href="?date=<?=$next_date;?>">
+                <i class="fa fa-arrow-right" aria-hidden="true" style="float:right">
+                    Next
+                </i>
+            </a>
+
+            <h4 id="date"><?php echo $date; ?></h4>
             <table style="width:80%" align="center">
                 <tr>
                     <th>Room Numbers</th>
