@@ -68,7 +68,9 @@ $timeslots = array("7-10", "10-13", "13-16", "16-19", "19-22");
 
     <button type="button" class="btn btn-primary" onclick="display()">Add Reservation</button>
 
-    <p id="text"></p>
+    <br/><br/>
+
+    <a href="index.php">Return to main page</a>
 </div>
 
 <script>
@@ -76,7 +78,7 @@ $timeslots = array("7-10", "10-13", "13-16", "16-19", "19-22");
         var x = document.getElementById('roomMenu').value;
         var y = document.getElementById('timeMenu').value;
         var z = document.getElementById('dateInput').value;
-        document.getElementById('text').innerHTML = x + " " + y + " " + z;
+        window.location.href = "addBooking.php?room=" + x + "&time=" + y + "&date=" + z;
     }
 </script>
 </body>
