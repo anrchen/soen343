@@ -2,6 +2,24 @@
 	Main.css
 ****************************************/
 
+
+/****************
+ login.php
+ ***************/
+.container h4{
+    color: #E37222;
+    font-weight: 300;
+}
+
+.container .form-group{
+    margin-top: 20px;
+}
+
+.container form .btn-default{
+    color: #E37222;
+}
+
+
 /****************
  index.php
  ***************/
