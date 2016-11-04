@@ -2,6 +2,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
+    $dbname = "conference";
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=account", $username, $password);
