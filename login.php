@@ -11,10 +11,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--FontAwesome-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- Customized header CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/header.css">
 
 </head>
 
 <body style="background-color: #E3E3E3">
+
+    <header class="header-basic">
+
+        <div class="header-limiter">
+
+            <h1><a href="#">Lot<span>us</span></a></h1>
+
+            <nav>
+                <a href="#">Support</a>
+                <a href="#">About</a>
+            </nav>
+        </div>
+    </header>
 
     <div id="banner">Booking System</div>
 
