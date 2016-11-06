@@ -3,7 +3,7 @@
 	{
 		/*
 		private Reservation reservation;
-		private WaitList[] waitlist;
+		private Queue<Reservation> waitlist;
 
 		public function_contruct(Reservation reservation, WaitList[] waitlist)
 		{
@@ -35,7 +35,10 @@
 		public function RemoveReservation()
 		{
 			var id = reservation.GetID();
-			reservation = null;
+			if(waitlist.Top() != null)
+				reservation = queue.next();
+			else
+				reservation = null;
 			return id;
 		}
 		*/
