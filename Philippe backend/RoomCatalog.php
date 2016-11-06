@@ -8,9 +8,11 @@
 			this.Rooms = Rooms;
 		}
 
-		public function GetRooms()
+		public function GetRoom(int roomNumber)
 		{
-			return Rooms;
+			return Rooms[roomNumber];
+
+			//I think here there is a call to the database to get the rooms
 		}
 	}
 ?>

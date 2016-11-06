@@ -19,6 +19,7 @@
 
 		public function RemoveReservation(int roomNumber, Time startTime, Time endTime, Student student)
 		{
+
 			//Create a RoomCatalog object and call the GetRoom(int roomNumber) function. It will return a Room object, hold this Room object in a variable lets call it room;
 
 			//if(room.IsAvailable())
