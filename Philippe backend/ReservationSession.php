@@ -19,6 +19,7 @@
 
 		public function RemoveReservation(int roomNumber, Time startTime, Time endTime, Student student)
 		{
+			//ON SECOND THOUGHT, IM GONNA THINK OF ANOTHER WAY OF REMOVING A RESERVATION, BECAUSE IT DOES'T MAKE SENSE TO REMOVE FROM A TIME PERSPECTIVE. MAYBE REMOVE IT FROM AN ID WHICH IS HELD IN THE STUDENT OBJECT.
 
 			//Create a RoomCatalog object and call the GetRoom(int roomNumber) function. It will return a Room object, hold this Room object in a variable lets call it room;
 
