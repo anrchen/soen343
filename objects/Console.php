@@ -1,14 +1,14 @@
 <?php
 
-include_once 'Catalog.php';
+include_once '../objects/ReservationCatalog.php';
+include_once '../objects/ReservationSession.php';
 
     Class Console
     {
-
         private $session;
         private $catalog;
 
-        public function __construct(Catalog $catalog, ReserveRoomSession $session)
+        public function __construct(ReservationCatalog $catalog, ReservationSession $session)
         {
             $this->catalog = $catalog;
             $this->session = $session;
@@ -16,11 +16,12 @@ include_once 'Catalog.php';
 
         public function makeNewRoomEntry()
         {
-            $this->session = new ReserveRoomSession($this->catalog);
+            $this->session = new ReservationSession($this->catalog);
+            $this->session->initiateRoomEntrySession();
         }
 
-        public function addRoom($roomNumber, $time){
-            $this->session->makeNewRoom($roomNumber, $time);
+        public function addRoom($roomNumber, $time, $user){
+            $this->session->makeNewRoom($roomNumber, $time, $user);
         }
 
         public function endRoomEntry(){
