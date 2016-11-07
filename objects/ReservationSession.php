@@ -1,10 +1,13 @@
 <?php
 
-class ReservationSession{
-    public function __construct()
-    {
+    Class ReservationSession{
+        private $catalog;
+        private $isComplete;
 
-    }
+        public function __construct(ReservationCatalog $catalog)
+        {
+            $this->catalog= $catalog;
+        }
 }
 
 ?>

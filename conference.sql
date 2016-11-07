@@ -12,6 +12,7 @@ CREATE TABLE Reservation(
   ReservationID VARCHAR(10) NOT NULL,
   roomNumber INT(5) NOT NULL,
   userName VARCHAR(255) NOT NULL,
+  Waitlists VARCHAR(255) NOT NULL,
   PRIMARY KEY(ReservationID),
   FOREIGN KEY(roomNumber) REFERENCES RoomCatalog(roomNumber)
         ON DELETE CASCADE
@@ -41,7 +42,6 @@ CREATE TABLE Room(
 CREATE TABLE TimeSlot(
   StartTime VARCHAR(10) NOT NULL,
   EndTime VARCHAR(10) NOT NULL,
-  Waitlists VARCHAR(255) NOT NULL,
   ReservationID VARCHAR(10) NOT NULL,
   FOREIGN KEY(ReservationID) REFERENCES Reservation(ReservationID)
         ON DELETE CASCADE
