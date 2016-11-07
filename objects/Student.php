@@ -1,9 +1,14 @@
 <?php
 
     class Student{
-        public function __construct()
-        {
 
+        private $username;
+        private $password;
+
+        public function __construct($username, $password)
+        {
+            $this->username = $username;
+            $this->password = $password;
         }
     }
 
