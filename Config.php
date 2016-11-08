@@ -5,14 +5,14 @@
     $dbname = "conference";
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=account", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=conference", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = CREATE TABLE account
+        $sql = CREATE TABLE conference
 			(		
 			userName varchar(25),
 			passWord varchar(25),
 			);
-		$sql .= SELECT * FROM account;		
+		$sql .= SELECT * FROM conference;		
         $conn->exec($sql);
     }
     catch(PDOException $e)
