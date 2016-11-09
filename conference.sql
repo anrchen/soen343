@@ -49,3 +49,6 @@ INSERT INTO Login (username, password)
     VALUES('chen','gobliinmaster420'),
       ('slifer', 'skydragon123'),
       ('charizard', 'flamethrower987');
+
+INSERT INTO `room`(`roomNumber`)
+    VALUES ('H908'),('H432'),('H843'),('H123'),('H732'),('H320');

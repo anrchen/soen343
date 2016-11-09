@@ -2,7 +2,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "connection";
+    $dbname = "conference";
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
 

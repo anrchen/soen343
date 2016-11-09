@@ -42,7 +42,16 @@
             }
 
             $rooms = array("H908", "H432", "H843", "H123", "H732", "H320"); //data structure for the rooms
-            $bool_test = true; //A testing variable
+            $timeslots = array("7-10","10-13","13-16","16-19", "19-22");
+
+            //For testing purposes
+            //Reservation of all with the same date -> November 19
+            $reservation = array(["room" => "H908", "time" => "7-10", "username" => "charizard"],
+                ["room" => "H908", "time" => "13-16", "username" => "chen"]
+                );
+            $add = false; //This is the boolean that will determine if a reservation slot is reserved or not
+
+
         ?>
 
         <div class="container" style="margin-top:40px;">
@@ -68,19 +77,30 @@
             <table style="width:80%" align="center">
                 <tr>
                     <th>Room Numbers</th>
-                    <th>7 - 10</th>
-                    <th>10 - 13</th>
-                    <th>13 - 16</th>
-                    <th>16 - 19</th>
-                    <th>19 - 22</th>
+                    <?php
+                        foreach($timeslots as $slots){
+                            echo '<th>' . $slots . '</th>';
+                        }
+                    ?>
                 </tr>
                 <?php
                 //Prints out each row : room and date of time slot
                     foreach($rooms as $room){
                         echo '<tr>';
                         echo '<td>' . $room . '</td>';
-                        for($i = 0; $i < 5; $i++){
-                            if($bool_test){
+                        foreach($timeslots as $slot){
+                            $add = false;
+                            for($j = 0; $j < sizeof($reservation); $j++){
+                                if($reservation[$j]['room'] == $room && $reservation[$j]['time'] == $slot){
+                                    $add = true;
+                                    $display_name = $reservation[$j]['username'];
+                                }
+                            }
+                            if($add){
+                                echo '<td style="background-color: red; color: #000;">' . $display_name . '</td>';
+
+                            }
+                            else{
                                 echo '<td></td>';
                             }
                         }
