@@ -6,7 +6,7 @@
         <title>Room Reservation System</title>
 
 		<!-- Custom CSS -->
-        <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <!--Bootstrap-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!--FontAwesome-->
