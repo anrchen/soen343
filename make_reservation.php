@@ -60,15 +60,12 @@ $timeslots = array("7-10", "10-13", "13-16", "16-19", "19-22");
 
     <div class="row">
         <div class="col-lg-4">
-            <label for="sel1">Select timeslot:</label>
-            <select class="form-control" id="timeMenu">
-                <option value="">Select timeslot</option>
-                <?php
-                foreach($timeslots as $timeslot){
-                    echo '<option value="' . $timeslot . '">' . $timeslot . '</option>';
-                }
-                ?>
-            </select>
+            <div class="col-lg-4">
+                Start time: <input type="text" class="form-control" id="startInput">
+            </div>
+            <div class="col-lg-4">
+                End time: <input type="text" class="form-control" id="endInput">
+            </div>
         </div>
     </div>
 
