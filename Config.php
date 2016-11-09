@@ -4,21 +4,31 @@
     $password = "";
     $dbname = "conference";
 
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=conference", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = CREATE TABLE conference
-			(		
-			userName varchar(25),
-			passWord varchar(25),
-			);
-		$sql .= SELECT * FROM conference;		
-        $conn->exec($sql);
-    }
-    catch(PDOException $e)
-    {
-        echo "Connection failed: " . $e->getMessage();
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
-    $conn=null;
+    $sql = "SELECT username, password FROM login";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+//            echo "<br> Username: " . $row["username"] . "<br> Password: " . $row["password"] . "<br>";
+            if($_GET['username']==$row["username"] and $_GET['password']==$row["password"]){
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
+                header('Location: '.'index.php');
+            }
+        }
+    }
+    $conn->close();
+
+    header('Location: '.'login.php?authentification=false');
+
 ?>
+
+

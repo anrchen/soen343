@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(empty($_SESSION['username'])) {
+        echo 'incorrect username/ password please try again.' ;
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +44,7 @@
     <div class="container" style="margin-top:40px;">
         <h4>Provide your username and password</h4>
 
-        <form role="form" action="index.php" method="post" class="form-horizontal">
+        <form action="Config.php" method="GET" class="form-horizontal">
 
             <div class="form-group">
                 <div class="col-lg-1">
@@ -57,7 +65,7 @@
             </div>
 
             <div class="col-lg-offset-3 col-lg-3">
-                <button class="btn btn-default btn-md">Login</button>
+                <input type="submit" class="btn btn-default btn-md" value="Login">
             </div>
         </form>
     </div>
