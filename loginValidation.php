@@ -18,16 +18,18 @@
         while ($row = $result->fetch_assoc()) {
 //            echo "<br> Username: " . $row["username"] . "<br> Password: " . $row["password"] . "<br>";
             if($_GET['username']==$row["username"] and $_GET['password']==$row["password"]){
-                if (session_status() == PHP_SESSION_NONE) {
-                    session_start();
-                }
+                $result=true;
+                session_start();
                 header('Location: '.'index.php');
+                break;
             }
         }
     }
     $conn->close();
 
-    header('Location: '.'login.php?authentification=false');
+    if($result==false){
+        header('Location: '.'login.php?authentification=false');
+    }
 
 ?>
 

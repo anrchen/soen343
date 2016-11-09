@@ -1,11 +1,3 @@
-<?php
-    session_start();
-    if(empty($_SESSION['username'])) {
-        echo 'incorrect username/ password please try again.' ;
-    }
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +35,13 @@
 
     <div class="container" style="margin-top:40px;">
         <h4>Provide your username and password</h4>
+        <?php
+            if(isset($_GET['authentification']) and $_GET['authentification']=='false'){
+                echo"Wrong username/password";
+            }
+        ?>
 
-        <form action="Config.php" method="GET" class="form-horizontal">
+        <form action="loginValidation.php" method="GET" class="form-horizontal">
 
             <div class="form-group">
                 <div class="col-lg-1">
