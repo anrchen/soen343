@@ -2,14 +2,11 @@
 
 class Room{
 
+    //the only attribute we need is the room number
     private $roomNumber;
-    private $time;
-    private $user;
 
-    public function __construct($roomNumber, $time, $user){
+    public function __construct($roomNumber){
         $this->roomNumber = $roomNumber;
-        $this->time = $time;
-        $this->user = $user;
     }
 
     public function display(){
