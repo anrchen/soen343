@@ -2,6 +2,7 @@
 
 class Room{
 
+    //the only attribute we need is the room number
     private $roomNumber;
 
     public function __construct($roomNumber){

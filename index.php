@@ -31,8 +31,6 @@
             </div>
         </header>
 
-        <div id="banner">Booking System</div>
-
         <?php
             if(isset($_GET['date'])){
                 $date = new DateTime($_GET['date']); // If date is given by the url, go directly to that date

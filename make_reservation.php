@@ -6,7 +6,7 @@
     <title>Room Reservation System</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--FontAwesome-->
@@ -18,83 +18,76 @@
 
 <body style="background-color: #E3E3E3">
 
-<header class="header-basic">
+    <header class="header-basic">
 
-    <div class="header-limiter">
+        <div class="header-limiter">
 
-        <h1><a href="#">Lot<span>us</span></a></h1>
+            <h1><a href="#">Lot<span>us</span></a></h1>
 
-        <nav>
-            <a href="#">Support</a>
-            <a href="#">Log in</a>
-            <a href="#">About</a>
-        </nav>
-    </div>
-</header>
-
-<div id="banner">Booking System</div>
-
-<?php
-$rooms = array("H908", "H432", "H843", "H123", "H732", "H320"); //data structure for the rooms
-$timeslots = array("7-10", "10-13", "13-16", "16-19", "19-22");
-?>
-
-<div class="container">
-    <h3>Create a Reservation</h3>
-
-    <div class="row">
-        <div class="col-lg-4">
-            <label for="sel1">Select a room:</label>
-            <select class="form-control" id="roomMenu">
-                <option value="">Select Room</option>
-                <?php
-                    foreach($rooms as $room){
-                        echo '<option value="' . $room . '">' . $room . "</option>";
-                    }
-                ?>
-            </select>
+            <nav>
+                <a href="#">Support</a>
+                <a href="#">Log in</a>
+                <a href="#">About</a>
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <br/>
+    <div id="banner">Booking System</div>
 
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="col-lg-4">
-                Start time: <input type="text" class="form-control" id="startInput">
+    <?php
+    $rooms = array("H908", "H432", "H843", "H123", "H732", "H320"); //data structure for the rooms
+    $timeslots = array("7-10", "10-13", "13-16", "16-19", "19-22");
+    ?>
+
+    <form action="objects/ReservationSession.php">
+        <div class="container">
+            <h3>Create a Reservation</h3>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <label for="sel1">Select a room:</label>
+                    <select class="form-control" id="roomMenu">
+                        <option value="">Select Room</option>
+                        <?php
+                            foreach($rooms as $room){
+                                echo '<option value="' . $room . '">' . $room . "</option>";
+                            }
+                        ?>
+                    </select>
+                </div>
             </div>
-            <div class="col-lg-4">
-                End time: <input type="text" class="form-control" id="endInput">
+
+            <br/>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="col-lg-4">
+                        Start time: <input type="text" class="form-control" id="startInput" name="startInput">
+                    </div>
+                    <div class="col-lg-4">
+                        End time: <input type="text" class="form-control" id="endInput" name="endInput">
+                    </div>
+                </div>
             </div>
+
+            <br/>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <label>Enter Date</label> (Example: 2016-10-28)
+                    <input type="text" class="form-control" id="dateInput" name="dateInput">
+                </div>
+            </div>
+
+            <br/>
+
+            <button type="submit" class="btn btn-primary">Add Reservation</button>
+
+            <br/><br/>
+
+            <a href="index.php">Return to main page</a>
         </div>
-    </div>
-
-    <br/>
-
-    <div class="row">
-        <div class="col-lg-4">
-            <label>Enter Date</label> (Example: 2016-10-28)
-            <input type="text" class="form-control" id="dateInput">
-        </div>
-    </div>
-
-    <br/>
-
-    <button type="button" class="btn btn-primary" onclick="display()">Add Reservation</button>
-
-    <br/><br/>
-
-    <a href="index.php">Return to main page</a>
-</div>
-
-<script>
-    function display() {
-        var x = document.getElementById('roomMenu').value;
-        var y = document.getElementById('timeMenu').value;
-        var z = document.getElementById('dateInput').value;
-        window.location.href = "addBooking.php?room=" + x + "&time=" + y + "&date=" + z;
-    }
-</script>
+    </form>
 </body>
 
 
