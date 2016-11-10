@@ -14,10 +14,11 @@ include_once '../objects/ReservationSession.php';
             $this->session = $session;
         }
 
-        public function makeNewRoomEntry()
+        public function makeNewRoomEntry(Student $student, ReservationCatalog $catalog)
         {
+            $this->catalog = $catalog;
             $this->session = new ReservationSession($this->catalog);
-            $this->session->initiateRoomEntrySession();
+            $this->session->initiateRoomEntrySession($student, $catalog);
         }
 
         public function addRoom($roomNumber, $time, $user){

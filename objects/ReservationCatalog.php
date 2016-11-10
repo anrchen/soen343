@@ -1,22 +1,23 @@
 <?php
 
+    include (__DIR__.'\Reservation.php');
+
     class ReservationCatalog{
-        private $rooms;
+        private $reservations = [];
 
         public function __construct()
         {
         }
 
-        public function makeNewRoom($roomNumber, $time, $user){
-            $room = new Room($roomNumber, $time, $user);
-            array_push($this->rooms, $room);
-            $this->display();
+        public function makeNewReservation($roomNumber, $timeSlot, $user){
+            $room = new Reservation($roomNumber, $timeSlot, $user);
+            array_push($this->reservations, $room);
         }
 
         public function display(){
-            echo "Displaying the reservation catalog";
-            for ($i = 0; $i < sizeof($this->rooms); $i++){
-                echo $this->rooms[$i];
+            echo "Displaying the reservation catalog<br>";
+            for ($i = 0; $i < sizeof($this->reservations); $i++){
+                $this->reservations[$i]->display();
             }
         }
     }

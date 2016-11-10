@@ -9,7 +9,7 @@
             $this->catalog= $catalog;
         }
 
-        public function initiateRoomEntrySession(){
+        public function initiateRoomEntrySession(Student $student, ReservationCatalog $catalog){
             $this->isComplete = false;
             // Testing: TBD / To be deleted
             echo "Initializing Room entry session";
@@ -19,7 +19,7 @@
             if($this->isComplete){
                 echo "Room entry session wasn't initialized...";
             } else{
-                $this->catalog->makeNewRoom($roomNumber, $time, $user);
+                $this->catalog->makeNewReservation($roomNumber, $time, $user);
                 echo "Room made";
             }
         }

@@ -1,0 +1,26 @@
+// This file serves as OOP test file
+
+<?php
+
+    include_once (__DIR__.'\objects\ReservationCatalog.php');
+    include_once (__DIR__.'\objects\TimeSlot.php');
+    include_once (__DIR__.'\objects\RoomCatalog.php');
+
+    $roomNumber = 122;
+    $time = New TimeSlot('12','13');
+    $user = 'shadowUser';
+
+    $catalog = new ReservationCatalog ();
+    $catalog->makeNewReservation($roomNumber, $time, $user);
+
+    $roomNumber = 112;
+    $time = New TimeSlot(10,11);
+    $user = 'coolUser';
+
+    $catalog->makeNewReservation($roomNumber, $time, $user);
+    $catalog->display();
+
+    $catalog = new RoomCatalog();
+    $catalog->addNewRoom($roomNumber);
+    $catalog->display();
+?>
