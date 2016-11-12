@@ -92,7 +92,7 @@
                             $add = false;
                             for($j = 0; $j < sizeof($reservation); $j++) {
                                 if ($timeslots[$i] == $reservation[$j]["start_time"] && $reservation[$j]["room"] == $room) {
-                                    $add = true; //store the data to be displayed in these vairables
+                                    $add = true; //search successful! store the data to be displayed in these variables
                                     $display_name = $reservation[$j]["username"];
                                     $end_data = (int)$reservation[$j]["end_time"];
                                     $start_data = (int)$reservation[$j]["start_time"];

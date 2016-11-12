@@ -32,8 +32,6 @@
         </div>
     </header>
 
-    <div id="banner">Booking System</div>
-
     <?php
     $rooms = array("H908", "H432", "H843", "H123", "H732", "H320"); //data structure for the rooms
     $timeslots = array("7-10", "10-13", "13-16", "16-19", "19-22");
@@ -43,7 +41,7 @@
         <div class="container">
             <h3>Create a Reservation</h3>
 
-            <div class="row">
+            <div class="row" style="margin-top: 30px;">
                 <div class="col-lg-4">
                     <label for="sel1">Select a room:</label>
                     <select class="form-control" id="roomMenu">
@@ -54,28 +52,30 @@
                             }
                         ?>
                     </select>
+
+                    <br/><br/>
+
+                    <div class="col-lg-6">
+                        <strong>Start time:</strong> <input type="text" class="form-control" id="startInput" name="startInput">
+                    </div>
+
+                    <div class="col-lg-6">
+                        <strong>End time:</strong> <input type="text" class="form-control" id="endInput" name="endInput">
+                    </div>
+                    <br>
+                </div>
+
+                <div class="col-lg-offset-1 col-lg-4">
+                    <label>Description</label>
+                    <textarea class="form-control" rows="7" name="descpInput"
+                    placeholder="Provide reason for booking (if specifically used for a course, provide course number)."></textarea>
                 </div>
             </div>
 
-            <br/>
-
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="col-lg-4">
-                        Start time: <input type="text" class="form-control" id="startInput" name="startInput">
-                    </div>
-                    <div class="col-lg-4">
-                        End time: <input type="text" class="form-control" id="endInput" name="endInput">
-                    </div>
-                </div>
-            </div>
-
-            <br/>
-
-            <div class="row">
-                <div class="col-lg-4">
-                    <label>Enter Date</label> (Example: 2016-10-28)
-                    <input type="text" class="form-control" id="dateInput" name="dateInput">
+                    <label>Enter Date (Format: YYYY-MM-DD)</label>
+                    <input type="text" class="form-control" id="endInput" name="descpInput">
                 </div>
             </div>
 
