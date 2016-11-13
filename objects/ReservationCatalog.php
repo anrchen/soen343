@@ -9,9 +9,9 @@
         {
         }
 
-        public function makeNewReservation($roomNumber, $timeSlot, $user){
-            $room = new Reservation($roomNumber, $timeSlot, $user);
-            array_push($this->reservations, $room);
+        public function makeNewReservation($roomNumber, $timeSlot, $user, $description){
+            $reservation = new Reservation($roomNumber, $timeSlot, $user, $description);
+            array_push($this->reservations, $reservation);
         }
 
         public function display(){

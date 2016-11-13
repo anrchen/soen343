@@ -15,12 +15,11 @@
             echo "Initializing Room entry session";
         }
 
-        public function makeNewRoom($roomNumber, $time, $user){
+        public function makeNewRoom($roomNumber, $time, $user, $description){
             if($this->isComplete){
                 echo "Room entry session wasn't initialized...";
             } else{
-                $this->catalog->makeNewReservation($roomNumber, $time, $user);
-                echo "Room made";
+                $this->catalog->makeNewReservation($roomNumber, $time, $user, $description);
             }
         }
 

@@ -24,7 +24,6 @@
                 <h1><a href="#">Lot<span>us</span></a></h1>
 
                 <nav>
-                    <a href="#">Support</a>
                     <?php
                         session_start();
                         if(isset($_SESSION['login_user'])){
@@ -38,6 +37,7 @@
                         }
                     ?>
                     <a href="#">About</a>
+                    <a href="#">Support</a>
                 </nav>
             </div>
         </header>

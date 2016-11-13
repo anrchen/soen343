@@ -18,6 +18,7 @@ CREATE TABLE Reservation(
   roomID VARCHAR (10) NOT NULL,
   loginID VARCHAR (25) NOT NULL,
   waitList VARCHAR (200) NOT NULL,
+  date VARCHAR (11) NOT NULL,
   FOREIGN KEY(roomID) REFERENCES Room(roomNumber)
       ON DELETE CASCADE
       ON UPDATE CASCADE,
@@ -50,5 +51,5 @@ INSERT INTO Login (username, password)
       ('slifer', 'skydragon123'),
       ('charizard', 'flamethrower987');
 
-INSERT INTO `room`(`roomNumber`)
+INSERT INTO Room(`roomNumber`)
     VALUES ('H908'),('H432'),('H843'),('H123'),('H732'),('H320');

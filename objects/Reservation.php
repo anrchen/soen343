@@ -14,7 +14,8 @@ class Reservation{
     }
 
     public function display(){
-        echo "Displaying the room: \n". $this->roomNumber."<br>";
+        echo "Room booked by: \n". $this->user."<br>";
+        echo "Room number: \n". $this->roomNumber."<br>";
     }
 }
 

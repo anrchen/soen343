@@ -1,17 +1,30 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "conference";
 
-    $connection = mysqli_connect($servername, $username, $password, $dbname);
+class Connection{
 
-    //Testing connection
-    if(mysqli_connect_errno()){
-        die("Database connection failed: " .
-            mysqli_connect_error() .
-            " (" . mysqli_connect_errno() .")"
-        );
+    public $servername = "localhost";
+    protected $username = "root";
+    protected $password = "";
+    public $dbname = "conference";
+
+    public $conn;
+    protected $query;
+
+    public function __construct()
+    {
+        // Create connection
+        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
     }
-?>
 
+    public function setQuery($query){
+        $this->query=$query;
+    }
+
+    public function close(){
+        $this->conn->close();
+    }
+}
+
+
+
+?>

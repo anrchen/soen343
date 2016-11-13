@@ -1,7 +1,7 @@
 <?php
 
-include_once '../objects/ReservationCatalog.php';
-include_once '../objects/ReservationSession.php';
+include_once 'ReservationCatalog.php';
+include_once 'ReservationSession.php';
 
     Class Console
     {
@@ -21,8 +21,8 @@ include_once '../objects/ReservationSession.php';
             $this->session->initiateRoomEntrySession($student, $catalog);
         }
 
-        public function addRoom($roomNumber, $time, $user){
-            $this->session->makeNewRoom($roomNumber, $time, $user);
+        public function addRoom($roomNumber, $time, $user, $description){
+            $this->session->makeNewRoom($roomNumber, $time, $user, $description);
         }
 
         public function endRoomEntry(){
