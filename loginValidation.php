@@ -20,6 +20,7 @@
             if($_GET['username']==$row["username"] and $_GET['password']==$row["password"]){
                 $result=true;
                 session_start();
+                $_SESSION['login_user']=$_GET['username'];
                 header('Location: '.'index.php');
                 break;
             }

@@ -1,6 +1,7 @@
 <?php
 
     include (__DIR__.'\Room.php');
+    include_once (__DIR__.'\TimeSlot.php');
 
     class RoomCatalog{
         private $rooms = [];
@@ -9,6 +10,8 @@
         {
         }
 
+        public function addNewRoom($roomNumber){
+            $room = new Room($roomNumber);
             array_push($this->rooms, $room);
         }
 

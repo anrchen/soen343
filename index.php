@@ -25,7 +25,8 @@
 
                 <nav>
                     <a href="#">Support</a>
-                    <a href="#">Log in</a>
+                    <button onclick="document.getElementById('id01').style.display='block'
+                        style='width:auto;'">Log in</button>
                     <a href="#">About</a>
                 </nav>
             </div>
