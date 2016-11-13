@@ -6,6 +6,7 @@ class Connection{
     protected $username = "root";
     protected $password = "";
     public $dbname = "conference";
+    protected $id;
 
     public $conn;
     protected $query;
@@ -20,9 +21,20 @@ class Connection{
         $this->query=$query;
     }
 
+    public function insertQuery(){
+        $this->conn->query($this->query);
+        $this->id=$this->conn->insert_id;
+        echo "Data successfully inserted";
+    }
+
     public function close(){
         $this->conn->close();
     }
+
+    public function getID(){
+        return $this->id;
+    }
+
 }
 
 

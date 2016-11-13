@@ -20,6 +20,12 @@
                 $this->reservations[$i]->display();
             }
         }
+
+        public function updateDB(){
+            for ($i = 0; $i < sizeof($this->reservations); $i++){
+                $this->reservations[$i]->updateDB();
+            }
+        }
     }
 
 ?>

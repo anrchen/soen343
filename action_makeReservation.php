@@ -16,8 +16,9 @@
     $session = new ReservationSession($catalog);
     $console = new Console($catalog,$session);
 
-    $timeslot = new TimeSlot($startTime,$endTime);
+//    $timeslot = new TimeSlot($startTime,$endTime);
     $console->addRoom($roomNumber,$timeslot,$user,$description);
 
     $catalog->display();
+    $catalog->updateDB();
 ?>

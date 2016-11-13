@@ -14,11 +14,11 @@ CREATE TABLE Room(
 /*Each Room could have many reservations: One-to-Many relation*/
 /*Each userName has at most one Reservation: One-to-One relation*/
 CREATE TABLE Reservation(
-  id VARCHAR (10) NOT NULL,
+  id INT (10) NOT NULL AUTO_INCREMENT,
   roomID VARCHAR (10) NOT NULL,
   loginID VARCHAR (25) NOT NULL,
-  waitList VARCHAR (200) NOT NULL,
-  date VARCHAR (11) NOT NULL,
+  description VARCHAR (200) NOT NULL,
+  waitList VARCHAR (200) DEFAULT NULL,
   FOREIGN KEY(roomID) REFERENCES Room(roomNumber)
       ON DELETE CASCADE
       ON UPDATE CASCADE,
@@ -32,11 +32,13 @@ CREATE TABLE Reservation(
 /*We are not adding timeSlots/ReservationID here, because it will cause data redundancy
 with the Reservation data Table. */
 
-/*Each Rev*/
+/*Each Reservation has one TimeSlot: One-to-One relation*/
+/*Each Room has many TimeSlot: One-to-Many relation*/
 CREATE TABLE TimeSlot(
   id INT (10) NOT NULL AUTO_INCREMENT,
   StartTime VARCHAR(10) NOT NULL,
   EndTime VARCHAR(10) NOT NULL,
+  date VARCHAR (11) NOT NULL,
   ReservationID VARCHAR (10) NOT NULL,
   PRIMARY KEY(id),
   FOREIGN KEY(ReservationID) REFERENCES reservation(id)
