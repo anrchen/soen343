@@ -30,7 +30,12 @@ class Reservation{
         $con->setQuery($sql);
         $con->insertQuery();
 
+//        $startTime = $this->timeSlot->getStart();
+//        $endTime = $this->timeSlot->getEnd();
+//        $date = $this->timeSlot->getDate();
 
+//        $sql = "INSERT INTO timeslot (StartTime,EndTime,date,ReservationID)
+//          VALUES ('$startTime','$endTime','','$con->getID')";
         $con->close();
     }
 }
