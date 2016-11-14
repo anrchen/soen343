@@ -65,7 +65,13 @@
 
         ?>
 
-        <div class="container" style="margin-top:40px;">
+        <div class="container" style="margin-top:20px;">
+
+
+            <?php
+                $user = $_SESSION['login_user'];
+                echo '<h2>Welcome ' . $user . '</h2>';
+            ?>
 
             <?php
                 $date = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
@@ -126,8 +132,8 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <a href="make_reservation.php"><button class="btn btn-warning">Make a Reservation</button></a>
-                     <button class="btn btn-info">Modify a Reservation</button>
-                     <button class="btn btn-danger">Drop a Reservation</button>
+                     <a href="modify_reservation.php"><button class="btn btn-info">Modify a Reservation</button></a>
+                     <a href="drop_reservation.php"><button class="btn btn-danger">Drop a Reservation</button></a>
                 </div>
             </div>
 

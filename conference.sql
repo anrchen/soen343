@@ -39,9 +39,9 @@ CREATE TABLE TimeSlot(
   StartTime VARCHAR(10) NOT NULL,
   EndTime VARCHAR(10) NOT NULL,
   date VARCHAR (11) NOT NULL,
-  ReservationID VARCHAR (10) NOT NULL,
+  ReservationID INT (10) NOT NULL,
   PRIMARY KEY(id),
-  FOREIGN KEY(ReservationID) REFERENCES reservation(id)
+  FOREIGN KEY(ReservationID) REFERENCES Reservation(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
@@ -49,9 +49,10 @@ CREATE TABLE TimeSlot(
 
 /**ALTER FUNCTIONS**/
 INSERT INTO Login (username, password)
-    VALUES('chen','gobliinmaster420'),
-      ('slifer', 'skydragon123'),
-      ('charizard', 'flamethrower987');
+VALUES('chen','gobliinmaster420'),
+  ('slifer', 'skydragon123'),
+  ('charizard', 'flamethrower987'),
+  ('adriel', 'abc');
 
 INSERT INTO Room(`roomNumber`)
-    VALUES ('H908'),('H432'),('H843'),('H123'),('H732'),('H320');
+VALUES ('H908'),('H432'),('H843'),('H123'),('H732'),('H320');

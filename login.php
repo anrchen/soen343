@@ -31,8 +31,6 @@
         </div>
     </header>
 
-    <div id="banner">Booking System</div>
-
     <div class="container" style="margin-top:40px;">
         <h4>Provide your username and password</h4>
         <?php
