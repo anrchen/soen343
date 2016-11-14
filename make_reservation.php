@@ -97,7 +97,7 @@
 
             <br/><br/>
 
-            <a href="index.php">Return to main page</a>
+            <a href="booking.php">Return to main page</a>
         </div>
     </form>
 </body>

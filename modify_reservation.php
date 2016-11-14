@@ -97,7 +97,7 @@
                   data-target="#modal">Modify</button>';
     ?>
     <br/><br/>
-    <a href="index.php">Return to main menu</a>
+    <a href="booking.php">Return to main menu</a>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="modal">
         <form action="#" method="post">

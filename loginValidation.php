@@ -21,7 +21,7 @@
                 $login=true;
                 session_start();
                 $_SESSION['login_user']=$_GET['username'];
-                header('Location: '.'index.php');
+                header('Location: '.'booking.php');
                 break;
             }
         }
@@ -29,7 +29,7 @@
     $conn->close();
 
     if($login==false){
-        header('Location: '.'login.php?authentification=false');
+        header('Location: '.'index.php?authentification=false');
     }
 
 ?>
