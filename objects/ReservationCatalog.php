@@ -32,7 +32,7 @@
         public function updateCatalogUser($user){
             $con = new Connection();
             $sql = "SELECT * FROM reservation
-                    INNER JOIN timeslot ON ReservationID = ReservationID
+                    INNER JOIN timeslot ON reservation.id = timeslot.ReservationID
                     WHERE loginID='$user'";
             $con->setQuery($sql);
             $con->executeQuery();
@@ -51,7 +51,7 @@
         public function updateCatalogObject(){
             $con = new Connection();
             $sql = "SELECT * FROM reservation
-                    INNER JOIN timeslot ON ReservationID = ReservationID";
+                    INNER JOIN timeslot ON reservation.id = timeslot.ReservationID";
             $con->setQuery($sql);
             $con->executeQuery();
             $result = $con->getResult();
