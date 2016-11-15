@@ -60,16 +60,70 @@
 </header>
 
 <div class="container" style="margin-top:40px;">
-    <h2>Drop Reservation <small>Select the reservation in which you would like to cancel.</small></h2>
+    <h2>Drop Reservation <small>Select the reservation you would like to cancel.</small></h2>
 
     <?php //display all reservations from the username
-    $reservation = array(["id" => "1", "room" => "H908", "start_time" => "7", "end_time" => "9",
+    $reservation = array(["id" => "3", "room" => "H908", "start_time" => "7", "end_time" => "9",
         "description" => "COMP 348. The room is used to work on the aspectJ
                              and lisp project.", "date" => "2016-11-9"],
-        ["id" => "2", "room" => "H908", "start_time" => "7", "end_time" => "9",
+        ["id" => "32", "room" => "H908", "start_time" => "7", "end_time" => "9",
             "description" => "COMP 348. The room is used to work on the aspectJ
                              and lisp project.", "date" => "2016-11-9"]);
     ?>
+
+    <?php
+    foreach($reservation as $reserve){
+
+        $id = $reserve['id'];
+        $descp = $reserve['description'];
+        $date = $reserve['date'];
+        $room = $reserve['room'];
+        $time = $reserve['start_time'] . ' - ' . $reserve['end_time'];
+
+        echo '<h5><strong><i>Reservation ID #' . $id . '</i></strong></h5>';
+
+        echo '<div id="display">';
+
+        echo '<p>Date: '. $date . ' &#9679; Time: ' . $time .
+            ' &#9679; Room: ' . $room . '</p>';
+
+        echo '<p>Current Description: <br/><span style="margin-left: 20px;"><i>'
+            . $descp . '</i></span></p>';
+        echo '</div>';
+    }
+    echo '<button class="btn btn-default btn-md" data-toggle="modal" 
+                  data-target="#modal">Drop</button>';
+    ?>
+    <br/><br/>
+    <a href="booking.php">Return to main menu</a>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+        <form action="action_dropReservation.php" method="post">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Drop a reservation </h4>
+                    </div>
+                    <div class="modal-body">
+                        <select name="id_reservation_drop">
+                            <option value="">Select reservation </option>
+                            <?php
+                                foreach($reservation as $r) {
+                                    $id = $r['id'];
+                                    echo '<option value="' . $id .'"name="' . $id .'">' . $id . '</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Drop Reservation</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 
 </div>
 

@@ -23,6 +23,10 @@
             }
         }
 
+        public function dropReservation($reservationId){
+            $this->catalog->dropReservation($reservationId);
+        }
+
         public function becomeComplete(){
             $this->isComplete=true;
             echo "Session completed";

@@ -28,6 +28,10 @@ include_once 'ReservationSession.php';
         public function endRoomEntry(){
             $this->session->becomeComplete();
         }
+
+        public function dropReservation($reservationId){
+            $this->session->dropReservation($reservationId);
+        }
     }
 
 

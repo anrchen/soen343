@@ -15,6 +15,13 @@
             array_push($this->reservations, $reservation);
         }
 
+        public function dropReservation($id){
+            $con = new Connection();
+            $sql = "DELETE * FROM reservation WHERE id='$id'";
+            $con->setQuery($sql);
+            $con->executeQuery();
+        }
+
         public function display(){
             echo "Displaying the reservation catalog<br>";
             for ($i = 0; $i < sizeof($this->reservations); $i++){

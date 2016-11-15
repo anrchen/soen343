@@ -12,6 +12,7 @@
     $date = $_GET['date'];
 
 
+
     $catalog = new ReservationCatalog();
     $session = new ReservationSession($catalog);
     $console = new Console($catalog,$session);
@@ -19,7 +20,7 @@
     $timeslot = new TimeSlot($startTime,$endTime, $date);
     $console->addRoom($roomNumber,$timeslot,$user,$description);
 
-//    $catalog->display();
+//  $catalog->display();
     $catalog->updateDB();
 
     header('Location: '.'booking.php');

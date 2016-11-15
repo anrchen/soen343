@@ -63,24 +63,25 @@
     <h2>Modify Reservation <small>Change the description of your reservation.</small></h2>
 
     <?php //display all reservations from the username
-        $reservation = array(["id" => "1", "room" => "H908", "start_time" => "7", "end_time" => "9",
+        $reservation = array(["id" => "11", "room" => "H908", "start_time" => "7", "end_time" => "9",
                              "description" => "COMP 348. The room is used to work on the aspectJ
                              and lisp project.", "date" => "2016-11-9"],
-                             ["id" => "2", "room" => "H908", "start_time" => "7", "end_time" => "9",
+                             ["id" => "22", "room" => "H908", "start_time" => "7", "end_time" => "9",
                              "description" => "COMP 348. The room is used to work on the aspectJ
                              and lisp project.", "date" => "2016-11-9"]);
     ?>
 
     <?php
-        $listNumber = 1; //unique id of the reservation
+
         foreach($reservation as $reserve){
 
+            $id = $reserve['id'];
             $descp = $reserve['description'];
             $date = $reserve['date'];
             $room = $reserve['room'];
             $time = $reserve['start_time'] . ' - ' . $reserve['end_time'];
 
-            echo '<h5><strong><i>Reservation ' . $listNumber . '</i></strong></h5>';
+            echo '<h5><strong><i>Reservation ' . $id . '</i></strong></h5>';
 
             echo '<div id="display">';
 
@@ -90,8 +91,6 @@
             echo '<p>Current Description: <br/><span style="margin-left: 20px;"><i>'
                     . $descp . '</i></span></p>';
             echo '</div>';
-
-            $listNumber++;
         }
             echo '<button class="btn btn-default btn-md" data-toggle="modal" 
                   data-target="#modal">Modify</button>';
@@ -100,7 +99,7 @@
     <a href="booking.php">Return to main menu</a>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-        <form action="#" method="post">
+        <form action="action_modifyReservation.php" method="post">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
