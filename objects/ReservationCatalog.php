@@ -29,7 +29,7 @@
             }
         }
 
-        public function updateCatalogObject($user){
+        public function updateCatalogUser($user){
             $con = new Connection();
             $sql = "SELECT * FROM reservation
                     INNER JOIN timeslot ON ReservationID = ReservationID
@@ -47,6 +47,25 @@
                 }
             }
         }
+
+        public function updateCatalogObject(){
+            $con = new Connection();
+            $sql = "SELECT * FROM reservation
+                    INNER JOIN timeslot ON ReservationID = ReservationID";
+            $con->setQuery($sql);
+            $con->executeQuery();
+            $result = $con->getResult();
+
+            if ($result->num_rows > 0) {
+                // output data
+                while($row = $result->fetch_assoc()) {
+                    $timeSlot = new TimeSlot($row["StartTime"],$row["EndTime"],$row["date"]);
+                    $reservation = new Reservation($row["roomID"],$timeSlot,$row["loginID"],$row["description"]);
+                    array_push($this->reservations, $reservation);
+                }
+            }
+        }
+
     }
 
 ?>

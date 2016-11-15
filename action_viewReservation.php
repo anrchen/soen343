@@ -3,6 +3,7 @@
     session_start();
 
     $catalog = new ReservationCatalog();
-    $catalog->updateCatalogObject($_SESSION['login_user']);
+//    $catalog->updateCatalogUser($_SESSION['login_user']);
+    $catalog->updateCatalogObject();
     $catalog->display();
 ?>
