@@ -8,6 +8,7 @@ class Reservation{
     private $timeSlot;
     private $user;
     private $description;
+    private $id;
 
     public function __construct($roomNumber, $timeSlot, $user, $description)
     {
@@ -18,6 +19,7 @@ class Reservation{
     }
 
     public function display(){
+        echo "Reservation ID: \n". $this->id."<br>";
         echo "Room booked by: \n". $this->user."<br>";
         echo "Room number: \n". $this->roomNumber."<br>";
         echo "Description: \n". $this->description."<br>";
@@ -45,6 +47,14 @@ class Reservation{
         $con->executeQuery();
 
         $con->close();
+    }
+
+    public function getID(){
+        return $this->id;
+    }
+
+    public function setID($id){
+        $this->id=$id;
     }
 
 }

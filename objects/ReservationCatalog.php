@@ -43,6 +43,7 @@
                 while($row = $result->fetch_assoc()) {
                     $timeSlot = new TimeSlot($row["StartTime"],$row["EndTime"],$row["date"]);
                     $reservation = new Reservation($row["roomID"],$timeSlot,$user,$row["description"]);
+                    $reservation->setID($row["id"]);
                     array_push($this->reservations, $reservation);
                 }
             }
@@ -61,6 +62,7 @@
                 while($row = $result->fetch_assoc()) {
                     $timeSlot = new TimeSlot($row["StartTime"],$row["EndTime"],$row["date"]);
                     $reservation = new Reservation($row["roomID"],$timeSlot,$row["loginID"],$row["description"]);
+                    $reservation->setID($row["id"]);
                     array_push($this->reservations, $reservation);
                 }
             }
