@@ -6,6 +6,7 @@ class Connection{
     protected $username = "root";
     protected $password = "";
     public $dbname = "conference";
+    protected $result;
     protected $id;
 
     public $conn;
@@ -21,10 +22,10 @@ class Connection{
         $this->query=$query;
     }
 
-    public function insertQuery(){
-        $this->conn->query($this->query);
+    public function executeQuery(){
+        $this->result=$this->conn->query($this->query);
         $this->id=$this->conn->insert_id;
-        echo "Data successfully inserted";
+        echo "Query successfully executed<br>";
     }
 
     public function close(){
@@ -35,6 +36,18 @@ class Connection{
         return $this->id;
     }
 
+    public function getResult(){
+        return $this->result;
+    }
+
+    public function getData($index){
+        if ($this->result->num_rows > 0) {
+            // output data
+            while($row = $this->result->fetch_assoc()) {
+                return $row["$index"];
+            }
+        }
+    }
 }
 
 

@@ -31,7 +31,7 @@ class Reservation{
         $sql = "INSERT INTO reservation (roomID,loginID,description) 
           VALUES ('$this->roomNumber','$this->user','$this->description')";
         $con->setQuery($sql);
-        $con->insertQuery();
+        $con->executeQuery();
 
         // Updating timeslot table's data
         $date = $this->timeSlot->getDate();
@@ -42,10 +42,11 @@ class Reservation{
         $sql = "INSERT INTO timeslot (StartTime,EndTime,date,ReservationID)
           VALUES ('$startDate','$endDate','$date','$id')";
         $con->setQuery($sql);
-        $con->insertQuery();
+        $con->executeQuery();
 
         $con->close();
     }
+
 }
 
 ?>

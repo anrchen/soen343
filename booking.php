@@ -28,11 +28,11 @@
                         session_start();
                         if(isset($_SESSION['login_user'])){
                             echo"
-                                <a href=\"logout.php\">Log out</a>
+                                <a href=\"index.php\">Log out</a>
                             ";
                         }else{
                             echo"
-                                <a href=\"login.php\">Log in</a>
+                                <a href=\"index.php\">Log in</a>
                             ";
                         }
                     ?>

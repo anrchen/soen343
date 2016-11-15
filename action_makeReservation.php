@@ -19,7 +19,7 @@
     $timeslot = new TimeSlot($startTime,$endTime, $date);
     $console->addRoom($roomNumber,$timeslot,$user,$description);
 
-    $catalog->display();
+//    $catalog->display();
     $catalog->updateDB();
 
     header('Location: '.'booking.php');
