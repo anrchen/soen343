@@ -11,8 +11,6 @@
     $user = $_SESSION['login_user'];
     $date = $_GET['date'];
 
-
-
     $catalog = new ReservationCatalog();
     $session = new ReservationSession($catalog);
     $console = new Console($catalog,$session);

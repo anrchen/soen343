@@ -26,7 +26,7 @@ class Connection{
     public function executeQuery(){
         $this->result=$this->conn->query($this->query);
         $this->id=$this->conn->insert_id;
-        if(mysqli_query($this->conn, $this->query)){
+        if($this->result){
             return true;
         }
         else{
