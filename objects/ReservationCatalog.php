@@ -1,7 +1,7 @@
 <?php
 
-    include (__DIR__.'\Reservation.php');
-    include (__DIR__.'\TimeSlot.php');
+    include (__DIR__.'/Reservation.php');
+    include (__DIR__.'/TimeSlot.php');
 
     class ReservationCatalog{
         private $reservations = [];
