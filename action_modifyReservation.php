@@ -13,10 +13,10 @@
     $result = $catalog->querySuccess();
 
     if($result == ""){
-        header('Location: ' . 'modify_reservation.php?valid=false');
+        header('Location: ' . 'booking.php?valid=false&action=modify');
     }
     else {
-        header('Location: ' . 'modify_reservation.php?valid=true');
+        header('Location: ' . 'booking.php?valid=true&action=modify');
     }
 /*
     $catalog->updateCatalogUser($_SESSION['login_user']);

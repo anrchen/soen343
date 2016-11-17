@@ -18,10 +18,14 @@
     $console = new Console($catalog,$session);
 
     $timeslot = new TimeSlot($startTime,$endTime, $date);
-    $console->addRoom($roomNumber,$timeslot,$user,$description);
+    $result = $console->addRoom($roomNumber,$timeslot,$user,$description); //returns true if query was success, false if not
 
 //  $catalog->display();
     $catalog->updateDB();
 
-    header('Location: '.'booking.php');
+    if($result == ""){
+        header('Location: ' . 'booking.php?valid=false&action=add');
+    } else {
+        header('Location: ' . 'booking.php?valid=true&action=add');
+    }
 ?>

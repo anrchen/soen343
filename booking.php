@@ -73,6 +73,29 @@
                 echo '<h2>Welcome ' . $user . '</h2>';
             ?>
 
+
+            <?php
+                //Display of the message. Either confirmation or error.
+                if (isset($_GET['valid']) && isset($_GET['action'])) {
+                    $result = $_GET['valid'];
+                    $action = $_GET['action'];
+                    if($result){
+                        if ($action == 'drop'){
+                            echo '<h6 style="color:green; font-size: 20px;">The reservation was successfully dropped</h6>';
+                        } else if($action == 'modify'){
+                            echo '<h6 style="color:green; font-size: 20px;">The reservation was successfully modified</h6>';
+                        } else{
+                            echo '<h6 style="color:green; font-size: 20px;">The reservation was successfully added</h6>';
+                        }
+                    }
+                    else {
+                        echo '<h6 style="color:red; font-size: 20px;">There was a problem with the procedure.</h6>';
+                    }
+                } else {
+                    echo '';
+                }
+            ?>
+
             <?php
                 $date = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
                 $prev_date = date('Y-m-d', strtotime($date .' -1 day'));
@@ -136,8 +159,9 @@
                      <a href="drop_reservation.php"><button class="btn btn-danger">Drop a Reservation</button></a>
                 </div>
             </div>
-
         </div>
+
+
     </body>
 
 

@@ -12,8 +12,8 @@
     $console->dropReservation($reservationDrop, $newDescription);
     $result = $catalog->querySuccess();
     if($result == ""){
-        header('Location: ' . 'drop_reservation.php?valid=false');
+        header('Location: ' . 'booking.php?valid=false&action=drop');
     } else {
-        header('Location: ' . 'drop_reservation.php?valid=true');
+        header('Location: ' . 'booking.php?valid=true&action=drop');
     }
 ?>
