@@ -57,6 +57,17 @@ class Reservation{
         $this->id=$id;
     }
 
+    public function getRoom(){
+        return $this->roomNumber;
+    }
+
+    public function getTimeSlot(){
+        return $this->timeSlot;
+    }
+
+    public function getUser(){
+        return $this->user;
+    }
 }
 
 ?>

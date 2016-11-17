@@ -53,13 +53,15 @@
             $rooms = array("H908", "H432", "H843", "H123", "H732", "H320"); //data structure for the rooms
             $timeslots = array("7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22");
 
+            include_once ('action_viewReservation.php');
+
             //For testing purposes
             //Reservation of all with the same date -> November 19
-            $reservation = array(
-                ["room" => "H908", "start_time" => "7", "end_time" => "9", "username" => "charizard"],
-                ["room" => "H732", "start_time" => "8", "end_time" => "9", "username" => "trump"],
-                ["room" => "H123", "start_time" => "17", "end_time" => "20", "username" => "adriel"]
-                );
+//            $reservation = array(
+//                ["room" => "H908", "start_time" => "7", "end_time" => "9", "username" => "charizard"],
+//                ["room" => "H732", "start_time" => "8", "end_time" => "9", "username" => "trump"],
+//                ["room" => "H123", "start_time" => "17", "end_time" => "20", "username" => "adriel"]
+//                );
             $add = false; //This is the boolean that will determine if a reservation slot is reserved or not
 
 

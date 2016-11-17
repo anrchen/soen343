@@ -44,7 +44,7 @@
             }
         }
 
-        public function updateCatalogUser($user){
+        public function updateCatalogByUser($user){
             $con = new Connection();
             $sql = "SELECT * FROM reservation
                     INNER JOIN timeslot ON reservation.id = timeslot.ReservationID
@@ -81,6 +81,38 @@
                     array_push($this->reservations, $reservation);
                 }
             }
+        }
+
+        public function updateCatalogByDate ($date){
+            $con = new Connection();
+            $sql = "SELECT * FROM reservation
+                    INNER JOIN timeslot ON reservation.id = timeslot.ReservationID
+                    WHERE date='$date'";
+            $con->setQuery($sql);
+            $con->executeQuery();
+            $result = $con->getResult();
+
+            if ($result->num_rows > 0) {
+                // output data
+                while($row = $result->fetch_assoc()) {
+                    $timeSlot = new TimeSlot($row["StartTime"],$row["EndTime"],$row["date"]);
+                    $reservation = new Reservation($row["roomID"],$timeSlot,$row["loginID"],$row["description"]);
+                    $reservation->setID($row["id"]);
+                    array_push($this->reservations, $reservation);
+                }
+            }
+        }
+
+        public function getCalendar(){
+            $reservations = array();
+            for ($i = 0; $i < sizeof($this->reservations); $i++){
+                $reservation = array("room"=>$this->reservations[$i]->getRoom(),
+                                        "start_time"=>$this->reservations[$i]->getTimeSlot()->getStart(),
+                                        "end_time"=>$this->reservations[$i]->getTimeSlot()->getEnd(),
+                                        "username"=>$this->reservations[$i]->getUser());
+                array_push($reservations, $reservation);
+            }
+            return $reservations;
         }
 
         public function querySuccess(){
