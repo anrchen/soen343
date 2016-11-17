@@ -27,6 +27,10 @@
             $this->catalog->dropReservation($reservationId);
         }
 
+        public function modifyReservation($reservationId, $newDescription){
+            $this->catalog->modifyReservation($reservationId, $newDescription);
+        }
+
         public function becomeComplete(){
             $this->isComplete=true;
             echo "Session completed";

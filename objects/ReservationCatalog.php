@@ -5,6 +5,7 @@
 
     class ReservationCatalog{
         private $reservations = [];
+        protected $valid;
 
         public function __construct()
         {
@@ -15,11 +16,18 @@
             array_push($this->reservations, $reservation);
         }
 
-        public function dropReservation($id){
+        public function modifyReservation($reservationId, $newDescription){
             $con = new Connection();
-            $sql = "DELETE * FROM reservation WHERE id='$id'";
+            $sql = "UPDATE reservation SET description='$newDescription' WHERE id='$reservationId'";
             $con->setQuery($sql);
-            $con->executeQuery();
+            $this->valid = $con->executeQuery();
+        }
+
+        public function dropReservation($reservationId){
+            $con = new Connection();
+            $sql = "DELETE FROM reservation WHERE id='$reservationId'";
+            $con->setQuery($sql);
+            $this->valid = $con->executeQuery();
         }
 
         public function display(){
@@ -73,6 +81,10 @@
                     array_push($this->reservations, $reservation);
                 }
             }
+        }
+
+        public function querySuccess(){
+            return $this->valid;
         }
 
     }

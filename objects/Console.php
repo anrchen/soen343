@@ -32,6 +32,10 @@ include_once 'ReservationSession.php';
         public function dropReservation($reservationId){
             $this->session->dropReservation($reservationId);
         }
+
+        public function modifyReservation($reservationId, $newDescription){
+            $this->session->modifyReservation($reservationId, $newDescription);
+         }
     }
 
 

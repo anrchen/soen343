@@ -63,10 +63,10 @@
     <h2>Drop Reservation <small>Select the reservation you would like to cancel.</small></h2>
 
     <?php //display all reservations from the username
-    $reservation = array(["id" => "3", "room" => "H908", "start_time" => "7", "end_time" => "9",
+    $reservation = array(["id" => "1", "room" => "H908", "start_time" => "7", "end_time" => "9",
         "description" => "COMP 348. The room is used to work on the aspectJ
                              and lisp project.", "date" => "2016-11-9"],
-        ["id" => "32", "room" => "H908", "start_time" => "7", "end_time" => "9",
+        ["id" => "4", "room" => "H908", "start_time" => "7", "end_time" => "9",
             "description" => "COMP 348. The room is used to work on the aspectJ
                              and lisp project.", "date" => "2016-11-9"]);
     ?>
@@ -91,11 +91,14 @@
             . $descp . '</i></span></p>';
         echo '</div>';
     }
-    echo '<button class="btn btn-default btn-md" data-toggle="modal" 
-                  data-target="#modal">Drop</button>';
+    echo '<button class="btn btn-default btn-md" data-toggle="modal" data-target="#modal">Drop</button>';
     ?>
     <br/><br/>
-    <a href="booking.php">Return to main menu</a>
+    <a href="booking.php">Return to main menu</a> <br/>
+
+    <?php
+        //add some function here that will display if the drop_reservation was a success or not
+    ?>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="modal">
         <form action="action_dropReservation.php" method="post">
@@ -118,7 +121,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Drop Reservation</button>
+                        <button type="submit" class="btn btn-primary" name="submit">Drop Reservation</button>
                     </div>
                 </div>
             </div>

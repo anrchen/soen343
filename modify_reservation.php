@@ -66,7 +66,7 @@
         $reservation = array(["id" => "11", "room" => "H908", "start_time" => "7", "end_time" => "9",
                              "description" => "COMP 348. The room is used to work on the aspectJ
                              and lisp project.", "date" => "2016-11-9"],
-                             ["id" => "22", "room" => "H908", "start_time" => "7", "end_time" => "9",
+                             ["id" => "2", "room" => "H908", "start_time" => "7", "end_time" => "9",
                              "description" => "COMP 348. The room is used to work on the aspectJ
                              and lisp project.", "date" => "2016-11-9"]);
     ?>
@@ -107,7 +107,7 @@
                         <h4 class="modal-title">Enter new description </h4>
                     </div>
                     <div class="modal-body">
-                        <select>
+                        <select name="id_reservation_modify">
                             <option value="">Select reservation </option>
                             <?php
                                 foreach($reservation as $r) {
@@ -117,7 +117,7 @@
 
                             ?>
                         </select>
-                        <textarea rows="10" class="form-control" style="min-width: 100%;"></textarea>
+                        <textarea rows="10" class="form-control" style="min-width: 100%;" name="newDescription"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

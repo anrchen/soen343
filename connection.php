@@ -8,6 +8,7 @@ class Connection{
     public $dbname = "conference";
     protected $result;
     protected $id;
+    protected $valid;
 
     public $conn;
     protected $query;
@@ -25,7 +26,12 @@ class Connection{
     public function executeQuery(){
         $this->result=$this->conn->query($this->query);
         $this->id=$this->conn->insert_id;
-        echo "Query successfully executed<br>";
+        if(mysqli_query($this->conn, $this->query)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public function close(){
@@ -47,6 +53,10 @@ class Connection{
                 return $row["$index"];
             }
         }
+    }
+
+    public function getValidQuery(){
+        return $this->valid;
     }
 }
 
