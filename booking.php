@@ -115,6 +115,7 @@
                 </i>
             </a>
 
+
             <h4 id="date"><?php echo $date; ?></h4>
             <table style="width:80%" align="center">
                 <tr>

@@ -12,25 +12,40 @@
 
     $sql = "SELECT username, password FROM login";
     $result = $conn->query($sql);
-    $login = false;
 
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while ($row = $result->fetch_assoc()) {
-            if($_GET['username']==$row["username"] and $_GET['password']==$row["password"]){
-                $login=true;
-                session_start();
-                $_SESSION['login_user']=$_GET['username'];
-                header('Location: '.'booking.php');
-                break;
+    $login = false;
+    $missing = false;
+
+        if(!isset($_GET['username']) || !isset($_GET['password'])){
+            $missing = true;
+        }
+
+        else{
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    if ($_GET['username'] == $row["username"] and $_GET['password'] == $row["password"]) {
+                        $login = true;
+                        session_start();
+                        $_SESSION['login_user'] = $_GET['username'];
+                        header('Location: ' . 'booking.php?');
+                        break;
+                    }
+                }
             }
         }
-    }
-    $conn->close();
+        $conn->close();
 
-    if($login==false){
-        header('Location: '.'index.php?authentification=false');
+    if($missing){
+        header('Location: '.'index.php?authentification=missing');
     }
+    else{
+        if($login==false){
+            header('Location: '.'index.php?authentification=false');
+        }
+    }
+
 
 ?>
 

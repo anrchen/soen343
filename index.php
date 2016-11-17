@@ -40,13 +40,20 @@
 
     <div class="container" style="margin-top:40px;">
         <h4>Provide your username and password</h4>
+        <p id="errorDisplay"></p>
         <?php
-            if(isset($_GET['authentification']) and $_GET['authentification']=='false'){
-                echo"Wrong username/password";
+
+            if(isset($_GET['authentification']) and $_GET['authentification'] == 'missing'){
+                echo"Empty fields";
+            }
+            else{
+                if(isset($_GET['authentification']) and $_GET['authentification']=='false'){
+                    echo"Wrong username/password";
+                }
             }
         ?>
 
-        <form action="loginValidation.php" method="GET" class="form-horizontal">
+        <form action="loginValidation.php" method="GET" name="login_form" class="form-horizontal" onsubmit="return validateForm()">
 
             <div class="form-group">
                 <div class="col-lg-1">
@@ -82,6 +89,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!--Bootstrap js-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--Custom js-->
+<script src="assets/js/index_form_validation.js";
 
 </body>
 </html>
