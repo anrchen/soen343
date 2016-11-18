@@ -51,6 +51,21 @@ table{
     background-color: #fff;
 }
 
+table td a{
+    color: #000;
+}
+
+table td a:visited{
+    color: #000;
+    text-decoration: none;
+}
+
+table td a:hover{
+    color:aliceblue;
+    transition: 1s;
+    text-decoration: none;
+}
+
 .container th{
     width:20px;
     color:#fff;

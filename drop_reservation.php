@@ -93,7 +93,7 @@
     <a href="booking.php">Return to main menu</a>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-        <form action="action_dropReservation.php" method="post">
+        <form action="action_dropReservation.php" name="dropReservationForm" method="post">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -101,7 +101,7 @@
                         <h4 class="modal-title">Drop a reservation </h4>
                     </div>
                     <div class="modal-body">
-                        <select name="id_reservation_drop">
+                        <select name="id_reservation_drop" id="Reservation">
                             <option value="">Select reservation </option>
                             <?php
                                 foreach($reservation as $r) {
@@ -109,7 +109,8 @@
                                     echo '<option value="' . $id .'"name="' . $id .'">' . $id . '</option>';
                                 }
                             ?>
-                        </select>
+                        </select> <br/>
+                        <p id="display2"></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -129,7 +130,8 @@
     <p>All rights reserved</p>
 </footer>
 
-
+<!--Validation-->
+<script src="assets/js/dropReservation_validation.js"></script>
 <!--JQuery-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!--Bootstrap js-->

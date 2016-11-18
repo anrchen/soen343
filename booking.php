@@ -62,7 +62,6 @@
 //                ["room" => "H732", "start_time" => "8", "end_time" => "9", "username" => "trump"],
 //                ["room" => "H123", "start_time" => "17", "end_time" => "20", "username" => "adriel"]
 //                );
-            $add = false; //This is the boolean that will determine if a reservation slot is reserved or not
 
 
         ?>
@@ -127,6 +126,7 @@
                     ?>
                 </tr>
                 <?php
+                $add = false; //This is the boolean that will determine if a reservation slot is reserved or not
                 //Prints out each row : room and date of time slot
                     foreach($rooms as $room){
                         echo '<tr>';
@@ -137,13 +137,16 @@
                                 if ($timeslots[$i] == $reservation[$j]["start_time"] && $reservation[$j]["room"] == $room) {
                                     $add = true; //search successful! store the data to be displayed in these variables
                                     $display_name = $reservation[$j]["username"];
+                                    $description = $reservation[$j]["description"];
                                     $end_data = (int)$reservation[$j]["end_time"];
                                     $start_data = (int)$reservation[$j]["start_time"];
                                     $duration = $end_data - $start_data + 1;
+
                                 }
                             }
                             if($add){
-                                echo '<td colspan="' . $duration . '" style="background-color: red">' . $display_name . '</td>';
+                                echo '<td colspan="' . $duration . '" style="background-color: red"><a href="#theModal" 
+                                data-toggle="modal" data-id="Hoola" onclick="myFunction()">' . $display_name . '</a></td>';
                                 $i = $i + ($duration-1);
                             }
                             else{
@@ -162,11 +165,26 @@
                      <a href="drop_reservation.php"><button class="btn btn-danger">Drop a Reservation</button></a>
                 </div>
             </div>
-        </div>
 
-
+            <div class="modal fade" tabindex="-1" role="dialog" id="theModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Description</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>nice</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/.container-->
     </body>
-
 
     <footer>
         <p>All rights reserved</p>

@@ -46,18 +46,18 @@
     </header>
 
     <?php
-    $rooms = array("H908", "H432", "H843", "H123", "H732", "H320"); //data structure for the rooms
-    $timeslots = array("7-10", "10-13", "13-16", "16-19", "19-22");
+        $rooms = array("H908", "H432", "H843", "H123", "H732", "H320");
     ?>
 
-    <form action="action_makeReservation.php">
+    <form action="action_makeReservation.php" name="makeReservationForm" onsubmit="return validateForm();">
         <div class="container">
             <h3>Create a Reservation</h3>
+            <p id="display"></p>
 
             <div class="row" style="margin-top: 30px;">
                 <div class="col-lg-4">
                     <label for="sel1">Select a room:</label>
-                    <select class="form-control" id="roomMenu" name="roomNumber">
+                    <select class="form-control" id="Room" name="roomNumber">
                         <option value="">Select Room</option>
                         <?php
                             foreach($rooms as $room){
@@ -69,31 +69,31 @@
                     <br/><br/>
 
                     <div class="col-lg-6">
-                        <strong>Start time:</strong> <input type="text" class="form-control" id="startInput" name="startTime">
+                        <strong>Start time:</strong> <input type="text" class="form-control" id="StartTime" name="startTime">
                     </div>
 
                     <div class="col-lg-6">
-                        <strong>End time:</strong> <input type="text" class="form-control" id="endInput" name="endTime">
+                        <strong>End time:</strong> <input type="text" class="form-control" id="EndTime" name="endTime">
                     </div>
                     <br>
                 </div>
 
                 <div class="col-lg-offset-1 col-lg-4">
                     <label>Description</label>
-                    <textarea class="form-control" rows="7" name="description"
+                    <textarea class="form-control" rows="7" name="description" id="Description"
                     placeholder="Provide reason for booking (if specifically used for a course, provide course number)."></textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-lg-4">
-                    <input type="text" class="form-control" name="date" id="date" placeholder="Choose Date">
+                    <input type="text" class="form-control" name="date" id="Date" placeholder="Choose Date">
                 </div>
             </div>
 
             <br/>
 
-            <button type="submit" class="btn btn-primary">Add Reservation</button>
+            <button type="submit" name="submit" class="btn btn-primary" value="Submit">Add Reservation</button>
 
             <br/><br/>
 
@@ -107,7 +107,7 @@
     <p>All rights reserved</p>
 </footer>
 
-
+<script src="assets/js/makeReservation_validation.js"></script>
 <!--JQuery-->
 <!--       Source: jQuery UI Datepicker -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -115,7 +115,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
     $( function() {
-        $( "#date" ).datepicker();
+        $( "#Date" ).datepicker();
     } );
 </script>
 <!--end of Datepicker -->
