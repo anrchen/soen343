@@ -4,7 +4,7 @@
 
 
 /****************
- login.php
+ index.php
  ***************/
 .container h4{
     color: #E37222;
@@ -19,9 +19,13 @@
     color: #E37222;
 }
 
+.container #welcomeTitle{
+    color: #E37222;
+}
+
 
 /****************
- index.php
+ booking.php
  ***************/
 #banner{
 	text-align: center;
@@ -34,7 +38,9 @@
     text-align: center;
 }
 
-/**Next and previous days buttons**/
+.container h2 span{
+    color: #5383d3;
+}
 
 
 /**Calendar**/
@@ -45,15 +51,30 @@ table{
     background-color: #fff;
 }
 
-th{
-    color:#D5DDE5;;
+table td a{
+    color: #000;
+}
+
+table td a:visited{
+    color: #000;
+    text-decoration: none;
+}
+
+table td a:hover{
+    color:aliceblue;
+    transition: 1s;
+    text-decoration: none;
+}
+
+.container th{
+    width:20px;
+    color:#fff;
     background:#1b1e24;
     border-bottom:4px solid #9ea7af;
     border-right: 1px solid #343a45;
-    font-size:23px;
+    font-size:18px;
     font-weight: 100;
-    padding:24px;
-    text-align:left;
+    text-align:center;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     vertical-align:middle;
 }
@@ -69,7 +90,7 @@ th:last-child {
 
 tr {
     border-top: 1px solid #C1C3D1;
-    border-bottom-: 1px solid #C1C3D1;
+    border-bottom: 1px solid #C1C3D1;
     color:#666B85;
     font-size:16px;
     font-weight:normal;
@@ -77,6 +98,7 @@ tr {
 }
 
 td {
+    color: #000;
     background:#FFFFFF;
     padding:20px;
     text-align:center;
