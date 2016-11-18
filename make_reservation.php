@@ -51,7 +51,7 @@
 
     <form action="action_makeReservation.php" name="makeReservationForm" onsubmit="return validateForm();">
         <div class="container">
-            <h3>Create a Reservation</h3>
+            <h2>Create a Reservation.<small>Fill in all the fields to add a reservation</small></h2>
             <p id="display"></p>
 
             <div class="row" style="margin-top: 30px;">

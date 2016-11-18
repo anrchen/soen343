@@ -60,7 +60,7 @@
 </header>
 
 <div class="container" style="margin-top:40px;">
-    <h2>Modify Reservation <small>Change the description of your reservation.</small></h2>
+    <h2>Modify Reservation. <small>Change the description of your reservation.</small></h2>
 
     <?php
         //returns
@@ -95,7 +95,7 @@
     <a href="booking.php">Return to main menu</a>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-        <form action="action_modifyReservation.php" method="post">
+        <form action="action_modifyReservation.php" name="modifyReservationForm" method="post" onsubmit="return validateForm()" ">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -103,7 +103,7 @@
                         <h4 class="modal-title">Enter new description </h4>
                     </div>
                     <div class="modal-body">
-                        <select name="id_reservation_modify">
+                        <select name="id_reservation_modify" id="Reservation">
                             <option value="">Select reservation </option>
                             <?php
                                 foreach($reservation as $r) {
@@ -113,7 +113,8 @@
 
                             ?>
                         </select>
-                        <textarea rows="10" class="form-control" style="min-width: 100%;" name="newDescription"></textarea>
+                        <textarea id="Description" rows="10" class="form-control" style="min-width: 100%;" name="newDescription"></textarea><br/>
+                        <p id="display2"></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -134,7 +135,8 @@
     <p>All rights reserved</p>
 </footer>
 
-
+<!--Validation-->
+<script src="assets/js/modifyReservation_validation.js"></script>
 <!--JQuery-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!--Bootstrap js-->

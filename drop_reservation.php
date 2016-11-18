@@ -60,7 +60,7 @@
 </header>
 
 <div class="container" style="margin-top:40px;">
-    <h2>Drop Reservation <small>Select the reservation you would like to cancel.</small></h2>
+    <h2>Drop Reservation. <small>Select the reservation you would like to cancel.</small></h2>
 
     <?php
          //returns all the reservations by the current user
@@ -93,7 +93,7 @@
     <a href="booking.php">Return to main menu</a>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-        <form action="action_dropReservation.php" name="dropReservationForm" method="post">
+        <form action="action_dropReservation.php" name="dropReservationForm" method="post" onsubmit="return validateForm()">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
     <head>
         <meta charset="utf-8" />
@@ -63,7 +63,6 @@
 //                ["room" => "H123", "start_time" => "17", "end_time" => "20", "username" => "adriel"]
 //                );
 
-
         ?>
 
         <div class="container" style="margin-top:20px;">
@@ -71,7 +70,7 @@
 
             <?php
                 $user = $_SESSION['login_user'];
-                echo '<h2>Welcome <span>' . $user . '</span></h2>';
+                echo '<h2>Welcome <span>' . $user . '</span><small>. Click on reservation for detailed information</small></h2>';
             ?>
 
 
@@ -137,6 +136,7 @@
                                 if ($timeslots[$i] == $reservation[$j]["start_time"] && $reservation[$j]["room"] == $room) {
                                     $add = true; //search successful! store the data to be displayed in these variables
                                     $display_name = $reservation[$j]["username"];
+                                    $reservation_id = $reservation[$j]["id"];
                                     $description = $reservation[$j]["description"];
                                     $end_data = (int)$reservation[$j]["end_time"];
                                     $start_data = (int)$reservation[$j]["start_time"];
@@ -145,8 +145,8 @@
                                 }
                             }
                             if($add){
-                                echo '<td colspan="' . $duration . '" style="background-color: red"><a href="#theModal" 
-                                data-toggle="modal" data-id="Hoola" onclick="myFunction()">' . $display_name . '</a></td>';
+                                echo '<td colspan="' . $duration . '" style="background-color: red"><a href="#" id="blue"
+                                data-toggle="modal" data-id="'.$description.'" onclick="myFunction(this)" data-target="#theModal">' . $display_name . '</a></td>';
                                 $i = $i + ($duration-1);
                             }
                             else{
@@ -174,22 +174,28 @@
                             <h4 class="modal-title">Description</h4>
                         </div>
                         <div class="modal-body">
-                            <p>nice</p>
+                            <p id="description"></p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div><!--/.container-->
+
     </body>
 
     <footer>
         <p>All rights reserved</p>
     </footer>
-		
+
+    <script>
+        function myFunction(selector){
+            var a = $(selector).data('id');
+            document.getElementById('description').innerText = a;
+        }
+    </script>
 
     <!--JQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

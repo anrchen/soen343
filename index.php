@@ -42,7 +42,9 @@
                         header('Location: ' . 'booking.php');
                     }
                     else {
-                        $message = "Username and Password do not match";
+                        $message = "<ul>";
+                        $message .= "<li style='color:red;'>Username and Password do not match</li>";
+                        $message .= "</ul>";
                     }
                 }
             }

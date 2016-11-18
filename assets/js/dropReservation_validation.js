@@ -3,9 +3,9 @@ function validateForm(){
     var display = "";
     var bool = true;
 
-    display = "Fix the following error:";
-    display += "<ul>";
+
     if(reservation == null || reservation == ""){
+        display += "<ul>";
         display += "<li>Select a room</li>";
         var bool = false;
     }
