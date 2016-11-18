@@ -109,7 +109,8 @@
                 $reservation = array("room"=>$this->reservations[$i]->getRoom(),
                                         "start_time"=>$this->reservations[$i]->getTimeSlot()->getStart(),
                                         "end_time"=>$this->reservations[$i]->getTimeSlot()->getEnd(),
-                                        "username"=>$this->reservations[$i]->getUser());
+                                        "username"=>$this->reservations[$i]->getUser(),
+                                        "description"=>$this->reservations[$i]->getDescription());
                 array_push($reservations, $reservation);
             }
             return $reservations;

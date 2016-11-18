@@ -68,6 +68,10 @@ class Reservation{
     public function getUser(){
         return $this->user;
     }
+
+    public function getDescription(){
+        return $this->description;
+    }
 }
 
 ?>
