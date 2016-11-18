@@ -62,13 +62,9 @@
 <div class="container" style="margin-top:40px;">
     <h2>Drop Reservation <small>Select the reservation you would like to cancel.</small></h2>
 
-    <?php //display all reservations from the username
-    $reservation = array(["id" => "5", "room" => "H908", "start_time" => "7", "end_time" => "9",
-        "description" => "COMP 348. The room is used to work on the aspectJ
-                             and lisp project.", "date" => "2016-11-9"],
-        ["id" => "4", "room" => "H908", "start_time" => "7", "end_time" => "9",
-            "description" => "COMP 348. The room is used to work on the aspectJ
-                             and lisp project.", "date" => "2016-11-9"]);
+    <?php
+         //returns all the reservations by the current user
+         include_once ('action_viewUserReservation.php');
     ?>
 
     <?php

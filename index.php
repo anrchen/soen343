@@ -1,8 +1,55 @@
 <?php
-    if(isset($_SESSION['login_user'])){
-        header('Location: '.'booking.php');
+    require_once ("objects/functions/function_login_validation.php");
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "conference";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
+    $sql = "SELECT username, password FROM login";
+    $result = $conn->query($sql);
+
+    $errors = array();
+    $message = "";
+
+    if(isset($_POST['submit'])){
+        //Process the form
+        $username = trim($_POST['username']);
+        $password = trim($_POST['password']);
+
+        $fields_required = array("username", "password");
+
+        foreach($fields_required as $field){
+            $value = trim($_POST[$field]);
+            if(!has_presence($value)){
+                $errors[$field] = ucfirst($field) . " cannot be blank";
+            }
+        }
+
+        if(empty($errors)){
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    if ($username == $row["username"] and $password == $row["password"]) {
+                        session_start();
+                        $_SESSION['login_user'] = $_POST['username'];
+                        header('Location: ' . 'booking.php');
+                    }
+                    else {
+                        $message = "Username and Password do not match";
+                    }
+                }
+            }
+        }
+    } else {
+        $message = "Please Log in";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -39,21 +86,15 @@
     </header>
 
     <div class="container" style="margin-top:40px;">
-        <h4>Provide your username and password</h4>
-        <p id="errorDisplay"></p>
-        <?php
+        <h2 id="welcomeTitle">Booking System</h2>
 
-            if(isset($_GET['authentification']) and $_GET['authentification'] == 'missing'){
-                echo"Empty fields";
-            }
-            else{
-                if(isset($_GET['authentification']) and $_GET['authentification']=='false'){
-                    echo"Wrong username/password";
-                }
-            }
+        <?php
+            require_once ("objects/functions/function_login_validation.php");
+            echo '<p id="message">'.$message.'</p>';
+            echo form_errors($errors);
         ?>
 
-        <form action="loginValidation.php" method="GET" name="login_form" class="form-horizontal" onsubmit="return validateForm()">
+        <form action="index.php" method="post" name="login_form" class="form-horizontal">
 
             <div class="form-group">
                 <div class="col-lg-1">
@@ -74,9 +115,13 @@
             </div>
 
             <div class="col-lg-offset-3 col-lg-3">
-                <input type="submit" class="btn btn-default btn-md" value="Login">
+                <input type="submit" name="submit" class="btn btn-default btn-md" value="Submit">
             </div>
         </form>
+
+        <?php
+
+        ?>
     </div>
 </body>
 

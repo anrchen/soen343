@@ -62,13 +62,9 @@
 <div class="container" style="margin-top:40px;">
     <h2>Modify Reservation <small>Change the description of your reservation.</small></h2>
 
-    <?php //display all reservations from the username
-        $reservation = array(["id" => "11", "room" => "H908", "start_time" => "7", "end_time" => "9",
-                             "description" => "COMP 348. The room is used to work on the aspectJ
-                             and lisp project.", "date" => "2016-11-9"],
-                             ["id" => "2", "room" => "H908", "start_time" => "7", "end_time" => "9",
-                             "description" => "COMP 348. The room is used to work on the aspectJ
-                             and lisp project.", "date" => "2016-11-9"]);
+    <?php
+        //returns
+        include_once ('action_viewUserReservation.php');
     ?>
 
     <?php
@@ -77,9 +73,9 @@
 
             $id = $reserve['id'];
             $descp = $reserve['description'];
-            $date = $reserve['date'];
             $room = $reserve['room'];
             $time = $reserve['start_time'] . ' - ' . $reserve['end_time'];
+            $date = $reserve['date'];
 
             echo '<h5><strong><i>Reservation ' . $id . '</i></strong></h5>';
 

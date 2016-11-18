@@ -111,6 +111,7 @@
                                         "end_time"=>$this->reservations[$i]->getTimeSlot()->getEnd(),
                                         "username"=>$this->reservations[$i]->getUser(),
                                         "description"=>$this->reservations[$i]->getDescription(),
+                                        "date"=>$this->reservations[$i]->getTimeSlot()->getDate(),
                                         "id"=>$this->reservations[$i]->getID());
                 array_push($reservations, $reservation);
             }

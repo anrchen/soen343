@@ -72,7 +72,7 @@
 
             <?php
                 $user = $_SESSION['login_user'];
-                echo '<h2>Welcome ' . $user . '</h2>';
+                echo '<h2>Welcome <span>' . $user . '</span></h2>';
             ?>
 
 

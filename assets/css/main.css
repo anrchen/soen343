@@ -4,7 +4,7 @@
 
 
 /****************
- login.php
+ index.php
  ***************/
 .container h4{
     color: #E37222;
@@ -19,9 +19,13 @@
     color: #E37222;
 }
 
+.container #welcomeTitle{
+    color: #E37222;
+}
+
 
 /****************
- index.php
+ booking.php
  ***************/
 #banner{
 	text-align: center;
@@ -34,7 +38,9 @@
     text-align: center;
 }
 
-/**Next and previous days buttons**/
+.container h2 span{
+    color: #5383d3;
+}
 
 
 /**Calendar**/
