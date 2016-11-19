@@ -27,7 +27,6 @@
         $catalog->updateDB();
         header('Location: ' . 'booking.php?valid=true&action=add');
     }else{
-//        $catalog->updateDB();
         $_SESSION['reservation']=$catalog->getTempReservation();
         include_once('make_reservationWaitList.php');
     }

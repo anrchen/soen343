@@ -10,13 +10,9 @@
     $roomCatalog = new RoomCatalog();
     $console = new Console($catalog,$session,$roomCatalog);
 
-//    var_dump($_SESSION['reservation']);
     $wait = new WaitList();
     $wait->addReservation($_SESSION['reservation']);
     $wait->updateDB();
-//    $wait->display();
 
-//    $reservation = $wait->nextReservation();
-//    $wait->display();
-//    $reservation->display();
+    header('Location: ' . 'booking.php?valid=true&action=add');
 ?>

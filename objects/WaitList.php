@@ -12,7 +12,6 @@ class WaitList{
     public function __construct()
     {
         $this->updateWaitListObject();
-        var_dump($this->ranking);
     }
 
     public function addReservation($reservation){
@@ -21,6 +20,7 @@ class WaitList{
             // if $noConflict is true, then there is no time conflict
             $noConflict=($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
             || ($r->getTimeSlot()->getEnd() <= $reservation->getTimeSlot()->getStart());
+            echo "noCOnclit is ".$noConflict;
             if($r->getRoom()==$reservation->getRoom()
                 and $r->getTimeSlot()->getDate()==$reservation->getTimeSlot()->getDate()
                 and !$noConflict
@@ -60,16 +60,21 @@ class WaitList{
     public function updateDB(){
         // Updating reservation table's data
         $con = new Connection();
-        $sql='';
+        $sql='DELETE FROM waitlist';
+        $con->setQuery($sql);
+        $con->executeQuery();
+
         foreach ($this->reservations as $reservation){
             $position = $this->ranking[$reservation->getID()];
             $id = $reservation->getID();
             echo 'Ranking is '.$this->ranking[$reservation->getID()];
-            $sql .= "UPDATE waitlist SET position=$position WHERE ReservationID=$id;";
+            $sql = "INSERT INTO waitlist (position,ReservationID)
+                      VALUES ($position, $id)";
+            echo '<br>SQL is '.$sql;
+            $con->setQuery($sql);
+            $con->executeQuery();
         }
-        echo '<br>SQL is '.$sql;
-        $con->setQuery($sql);
-        $con->executeQuery();
+
 
 
         $con->close();

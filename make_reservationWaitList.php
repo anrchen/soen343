@@ -49,9 +49,6 @@
 
         <p><a href="make_reservation.php?deleteOld=true">Make new reservation</a></p>
         <p><a href="action_waitList.php">Add reservation to waitlist</a></p>
-<?php
-    var_dump($_SESSION['reservation']);
-?>
 
 
 </body>
