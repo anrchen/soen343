@@ -1,10 +1,10 @@
 <?php
-
-class WaitList{
+class Student{
     public function __construct()
     {
 
     }
+
 }
 
 ?>
