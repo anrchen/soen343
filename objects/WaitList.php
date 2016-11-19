@@ -38,25 +38,24 @@ class WaitList{
         echo "Displaying the reservation catalog<br>";
         for ($i = 0; $i < sizeof($this->reservations); $i++){
             $this->reservations[$i]->display();
-//            try{
-//                echo 'Waitlist position: '.$this->ranking[$this->reservations[$i]->getID()].'<br>';
-//            }catch (Exception $e){
-//                echo 'This is not in waitingList anymore.<br>';
-//            }
             echo 'Waitlist position: '.$this->ranking[$this->reservations[$i]->getID()].'<br>';
             echo"<br>";
         }
     }
 
+
+    // Removed the Reservation from the array;
     public function nextReservation(){
         $flipped_ranking = array_flip($this->ranking);
-        $reservation=$flipped_ranking['2'];
+        $reservationID=$flipped_ranking['2'];
         array_splice($this->ranking, 1, 2);
+        foreach ($this->reservations as $key => $reservation){
+            if($reservation->getID()==$reservationID){
+                unset($this->reservations[$key]);
+                return $reservation;
+            }
+        }
 
-        echo "After next: <br>";
-        $this->display();
-        echo $reservation->display();
-//        return $reservation;
     }
 }
 

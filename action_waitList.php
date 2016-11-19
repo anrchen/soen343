@@ -5,6 +5,6 @@
     $wait->updateWaitListObject();
     $wait->display();
 
-    $wait->nextReservation();
+    $reservation = $wait->nextReservation();
 //    $reservation->display();
 ?>
