@@ -1,8 +1,8 @@
 <?php
 
-    include (__DIR__.'\Room.php');
-    include_once (__DIR__.'\TimeSlot.php');
-include_once (__DIR__.'\Reservation.php');
+    include (__DIR__.'/Room.php');
+    include_once (__DIR__.'/TimeSlot.php');
+include_once (__DIR__.'/Reservation.php');
 
     class RoomCatalog{
         private $rooms = [];

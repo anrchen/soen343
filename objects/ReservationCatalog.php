@@ -162,13 +162,13 @@
             $con->setQuery($sql);
             $con->executeQuery();
             // Updating timeslot table's data
-            $date = $this->tempReservation->getTimeSlot->getDate();
+            $date = $this->tempReservation->getTimeSlot()->getDate();
 
             $id = $con->getID();
             $this->tempReservation->setID($id);
 
-            $startDate = $this->tempReservation->getTimeSlot->getStart();
-            $endDate = $this->tempReservation->getTimeSlot->getEnd();
+            $startDate = $this->tempReservation->getTimeSlot()->getStart();
+            $endDate = $this->tempReservation->getTimeSlot()->getEnd();
 
             $sql = "INSERT INTO timeslot (StartTime,EndTime,date,ReservationID)
           VALUES ('$startDate','$endDate','$date','$id')";

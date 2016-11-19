@@ -26,6 +26,7 @@ class WaitList{
                 and !$noConflict
                 and $this->ranking[$r->getID()]>$position
             ){
+                echo '<br>Position is changed'.$position;
                 $position=$this->ranking[$r->getID()];
             }
         }
