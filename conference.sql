@@ -18,7 +18,7 @@ CREATE TABLE Reservation(
   roomID VARCHAR (10) NOT NULL,
   loginID VARCHAR (25) NOT NULL,
   description VARCHAR (200) NOT NULL,
-  waitList VARCHAR (200) DEFAULT NULL,
+#   waitList VARCHAR (200) DEFAULT NULL,
   FOREIGN KEY(roomID) REFERENCES Room(roomNumber)
       ON DELETE CASCADE
       ON UPDATE CASCADE,
@@ -46,13 +46,32 @@ CREATE TABLE TimeSlot(
         ON UPDATE CASCADE
 );
 
+# Each WaitList has many reservations
+# Each Reservation has one WaitList
+CREATE TABLE WaitList(
+  ReservationID INT (10) NOT NULL,
+  position INT (10) NOT NULL,
+  FOREIGN KEY(ReservationID) REFERENCES Reservation(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
 
 /**ALTER FUNCTIONS**/
 INSERT INTO Login (username, password)
-VALUES('chen','gobliinmaster420'),
+VALUES('chen','abc'),
   ('slifer', 'skydragon123'),
   ('charizard', 'flamethrower987'),
   ('adriel', 'abc');
 
-INSERT INTO Room(`roomNumber`)
+INSERT INTO Room(roomNumber)
 VALUES ('H908'),('H432'),('H843'),('H123'),('H732'),('H320');
+
+
+INSERT INTO Reservation(id, roomID, loginID, description)
+VALUES ('123','H432','chen','This is my room!');
+
+INSERT INTO TimeSlot(id,StartTime,EndTime,date,ReservationID)
+VALUES (60,'10','11','11/19/2016',123);
+
+INSERT INTO WaitList (ReservationID, position)
+VALUES (123, 2);
