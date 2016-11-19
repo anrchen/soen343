@@ -21,9 +21,4 @@
     else {
         header('Location: ' . 'booking.php?valid=true&action=modify');
     }
-
-
-
- /*   $catalog->display();*/
-
 ?>
