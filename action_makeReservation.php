@@ -12,14 +12,16 @@
     $date = $_GET['date'];
 
     $catalog = new ReservationCatalog();
+    $roomCatalog = new RoomCatalog();
     $session = new ReservationSession($catalog);
-    $console = new Console($catalog,$session);
+    $console = new Console($catalog,$session, $roomCatalog);
 
     $timeslot = new TimeSlot($startTime,$endTime, $date);
     $result = $console->addRoom($roomNumber,$timeslot,$user,$description); //returns true if query was success, false if not
 
 //  $catalog->display();
     $catalog->updateDB();
+
 
     if($result == ""){
         header('Location: ' . 'booking.php?valid=false&action=add');

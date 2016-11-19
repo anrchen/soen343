@@ -1,7 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: a-jam
- * Date: 2016-11-18
- * Time: 7:10 PM
- */
+    include_once ('objects/Console.php');
+
+    $catalog = new ReservationCatalog();
+    $roomCatalog = new RoomCatalog();
+    $session = new ReservationSession($catalog);
+    $console = new Console($catalog, $session, $roomCatalog);
+
+    $roomCatalog->updateCatalogObject();
+    $roomNumber = $console->getAllRoom();
+?>

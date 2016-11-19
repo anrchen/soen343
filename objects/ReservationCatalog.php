@@ -17,10 +17,15 @@
         }
 
         public function modifyReservation($reservationId, $newDescription){
-            $con = new Connection();
-            $sql = "UPDATE reservation SET description='$newDescription' WHERE id='$reservationId'";
-            $con->setQuery($sql);
-            $this->valid = $con->executeQuery();
+            var_dump($this->reservations);
+            foreach($this->reservations as $reservation){
+                echo $reservation->getID() . 'nice';
+                echo $reservationId;
+                if($reservation->getID() === $reservationId){
+                    $reservation->modifyReservation($newDescription);
+                }
+                break;
+            }
         }
 
         public function dropReservation($reservationId){

@@ -46,7 +46,9 @@
     </header>
 
     <?php
-        $rooms = array("H908", "H432", "H843", "H123", "H732", "H320");
+    //    $rooms = array("H908", "H432", "H843", "H123", "H732", "H320");
+        include_once ('action_viewRooms.php');
+        var_dump($roomNumber);
     ?>
 
     <form action="action_makeReservation.php" name="makeReservationForm" onsubmit="return validateForm();">
@@ -60,7 +62,7 @@
                     <select class="form-control" id="Room" name="roomNumber">
                         <option value="">Select Room</option>
                         <?php
-                            foreach($rooms as $room){
+                            foreach($roomNumber as $room){
                                 echo '<option value="' . $room . '">' . $room . "</option>";
                             }
                         ?>
