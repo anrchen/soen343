@@ -24,9 +24,9 @@ include_once 'RoomCatalog.php';
             $this->session->initiateRoomEntrySession($student, $catalog);
         }
 
-        public function addRoom($roomNumber, $time, $user, $description){
+        public function addReservation($roomNumber, $time, $user, $description){
 //            $room = $this->roomCatalog->getRoom($roomNumber);
-            $this->session->makeNewRoom($roomNumber, $time, $user, $description);
+            return $this->session->makeNewReservation($roomNumber, $time, $user, $description);
         }
 
         public function endRoomEntry(){

@@ -12,17 +12,25 @@ class WaitList{
     public function __construct()
     {
         $this->updateWaitListObject();
+        var_dump($this->ranking);
     }
 
     public function addReservation($reservation){
+        $position=0;
         foreach ($this->reservations as $r){
+            // if $noConflict is true, then there is no time conflict
+            $noConflict=($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
+            || ($r->getTimeSlot()->getEnd() <= $reservation->getTimeSlot()->getStart());
             if($r->getRoom()==$reservation->getRoom()
-
+                and $r->getTimeSlot()->getDate()==$reservation->getTimeSlot()->getDate()
+                and !$noConflict
+                and $this->ranking[$r->getID()]>$position
             ){
-
+                $position=$this->ranking[$r->getID()];
             }
         }
-        $position='';
+        $position+=1;
+        echo "His position is at".$position;
         $this->ranking[$reservation->getID()]=$position;
         array_push($this->reservations,$reservation);
     }
@@ -43,7 +51,7 @@ class WaitList{
                 $reservation = new Reservation($row["roomID"],$timeSlot,$row["loginID"],$row["description"]);
                 $reservation->setID($row["id"]);
                 array_push($this->reservations, $reservation);
-                $this->ranking = array($reservation->getID()=>$row["position"]);
+                $this->ranking[$reservation->getID()]=$row["position"];
             }
         }
     }
@@ -53,8 +61,10 @@ class WaitList{
         $con = new Connection();
         $sql='';
         foreach ($this->reservations as $reservation){
-            echo 'Ranking is '.$this->ranking['$reservation->getID()'];
-            $sql .= "UPDATE waitlist SET position=$this->ranking[$reservation->getID()] WHERE ReservationID=$reservation->getID();";
+            $position = $this->ranking[$reservation->getID()];
+            $id = $reservation->getID();
+            echo 'Ranking is '.$this->ranking[$reservation->getID()];
+            $sql .= "UPDATE waitlist SET position=$position WHERE ReservationID=$id;";
         }
         echo '<br>SQL is '.$sql;
         $con->setQuery($sql);

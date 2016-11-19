@@ -1,11 +1,12 @@
 <?php
 
-    include (__DIR__.'/Reservation.php');
-    include (__DIR__.'/TimeSlot.php');
+    include_once (__DIR__.'/Reservation.php');
+    include_once (__DIR__.'/TimeSlot.php');
 
     class ReservationCatalog{
         private $reservations = [];
         protected $valid;
+        private $tempReservation;
 
         public function __construct()
         {
@@ -13,7 +14,12 @@
 
         public function makeNewReservation($roomNumber, $timeSlot, $user, $description){
             $reservation = new Reservation($roomNumber, $timeSlot, $user, $description);
-            array_push($this->reservations, $reservation);
+            if($this->getConflict($reservation)==null){
+                array_push($this->reservations, $reservation);
+                return null;
+            }
+            $this->tempReservation = $reservation;
+            return $reservation;
         }
 
         public function modifyReservation($reservationId, $newDescription){
@@ -21,7 +27,7 @@
             foreach($this->reservations as $reservation){
                 echo $reservation->getID() . 'nice';
                 echo $reservationId;
-                if($reservation->getID() === $reservationId){
+                if($reservation->getID() == $reservationId){
                     $reservation->modifyReservation($newDescription);
                 }
                 break;
@@ -129,16 +135,51 @@
 
         public function getConflict($reservation){
             foreach ($this->reservations as $r){
-                if(($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
+                if($r->getTimeSlot()->getDate() == $reservation->getTimeSlot()->getDate()
+                    and $r->getRoom()==$reservation->getRoom()){
+                    if(($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
                     or ($r->getTimeSlot()->getEnd() <= $reservation->getTimeSlot()->getStart())){
-                    echo 'There is no conflict';
-                }else{
-                    echo 'There is a conflict';
-                    return $reservation;
+                        // then there is no conflict
+                    }else{
+                        // else there is a conflict
+                        return $reservation;
+                    }
+                }else{ // else there is no conflict
                 }
             }
+            return null;
 
         }
+
+        public function getTempReservation(){
+            $roomNumber = $this->tempReservation->getRoom();
+            $user = $this->tempReservation->getUser();
+            $description = $this->tempReservation->getDescription();
+
+            $con = new Connection();
+            $sql = "INSERT INTO reservation (roomID,loginID,description) 
+          VALUES ('$roomNumber','$user','$description')";
+            $con->setQuery($sql);
+            $con->executeQuery();
+            // Updating timeslot table's data
+            $date = $this->tempReservation->getTimeSlot->getDate();
+
+            $id = $con->getID();
+            $this->tempReservation->setID($id);
+
+            $startDate = $this->tempReservation->getTimeSlot->getStart();
+            $endDate = $this->tempReservation->getTimeSlot->getEnd();
+
+            $sql = "INSERT INTO timeslot (StartTime,EndTime,date,ReservationID)
+          VALUES ('$startDate','$endDate','$date','$id')";
+            $con->setQuery($sql);
+            $con->executeQuery();
+
+            $con->close();
+
+            return $this->tempReservation;
+        }
+
 
     }
 

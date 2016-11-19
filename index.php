@@ -1,6 +1,7 @@
 <?php
     require_once ("objects/functions/function_login_validation.php");
 
+
     $servername = "localhost";
     $username = "root";
     $password = "";

@@ -1,3 +1,10 @@
+<?php
+    if(isset($_GET['deleteOld'])){
+        var_dump($_SESSION['reservation']);
+//        header('Location: ' . 'booking.php?valid=false&action=drop');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +35,7 @@
 
             <nav>
                 <?php
-                    session_start();
+//                    session_start();
                     if(isset($_SESSION['login_user'])){
                         echo "<a style='color: white'>Logged in as ".$_SESSION['login_user']."</a> 
                                     <a href=\"logout.php\">Log out</a>
@@ -55,6 +62,7 @@
         <div class="container">
             <h2>Create a Reservation.<small>Fill in all the fields to add a reservation</small></h2>
             <p id="display"></p>
+
 
             <div class="row" style="margin-top: 30px;">
                 <div class="col-lg-4">
