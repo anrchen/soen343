@@ -11,6 +11,20 @@ class WaitList{
 
     public function __construct()
     {
+        $this->updateWaitListObject();
+    }
+
+    public function addReservation($reservation){
+        foreach ($this->reservations as $r){
+            if($r->getRoom()==$reservation->getRoom()
+
+            ){
+
+            }
+        }
+        $position='';
+        $this->ranking[$reservation->getID()]=$position;
+        array_push($this->reservations,$reservation);
     }
 
     public function updateWaitListObject(){
@@ -32,6 +46,22 @@ class WaitList{
                 $this->ranking = array($reservation->getID()=>$row["position"]);
             }
         }
+    }
+
+    public function updateDB(){
+        // Updating reservation table's data
+        $con = new Connection();
+        $sql='';
+        foreach ($this->reservations as $reservation){
+            echo 'Ranking is '.$this->ranking['$reservation->getID()'];
+            $sql .= "UPDATE waitlist SET position=$this->ranking[$reservation->getID()] WHERE ReservationID=$reservation->getID();";
+        }
+        echo '<br>SQL is '.$sql;
+        $con->setQuery($sql);
+        $con->executeQuery();
+
+
+        $con->close();
     }
 
     public function display(){

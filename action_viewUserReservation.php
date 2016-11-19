@@ -6,4 +6,5 @@
     $catalog = new ReservationCatalog();
     $catalog->updateCatalogByUser($user);
     $reservation = $catalog->getCalendar();
+
 ?>

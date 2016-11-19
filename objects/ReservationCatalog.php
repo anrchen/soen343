@@ -127,6 +127,19 @@
             return $this->valid;
         }
 
+        public function getConflict($reservation){
+            foreach ($this->reservations as $r){
+                if(($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
+                    or ($r->getTimeSlot()->getEnd() <= $reservation->getTimeSlot()->getStart())){
+                    echo 'There is no conflict';
+                }else{
+                    echo 'There is a conflict';
+                    return $reservation;
+                }
+            }
+
+        }
+
     }
 
 ?>

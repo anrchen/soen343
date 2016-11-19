@@ -35,12 +35,12 @@ with the Reservation data Table. */
 /*Each Reservation has one TimeSlot: One-to-One relation*/
 /*Each Room has many TimeSlot: One-to-Many relation*/
 CREATE TABLE TimeSlot(
-  id INT (10) NOT NULL AUTO_INCREMENT,
+  Tid INT (10) NOT NULL AUTO_INCREMENT,
   StartTime VARCHAR(10) NOT NULL,
   EndTime VARCHAR(10) NOT NULL,
   date VARCHAR (11) NOT NULL,
   ReservationID INT (10) NOT NULL,
-  PRIMARY KEY(id),
+  PRIMARY KEY(Tid),
   FOREIGN KEY(ReservationID) REFERENCES Reservation(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
@@ -70,8 +70,15 @@ VALUES ('H908'),('H432'),('H843'),('H123'),('H732'),('H320');
 INSERT INTO Reservation(id, roomID, loginID, description)
 VALUES ('123','H432','chen','This is my room!');
 
-INSERT INTO TimeSlot(id,StartTime,EndTime,date,ReservationID)
+INSERT INTO Reservation(id, roomID, loginID, description)
+VALUES ('124','H432','adriel','Maybe it is my room!');
+
+INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
 VALUES (60,'10','11','11/19/2016',123);
+INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
+VALUES (61,'10','11','11/19/2016',124);
 
 INSERT INTO WaitList (ReservationID, position)
 VALUES (123, 2);
+INSERT INTO WaitList (ReservationID, position)
+VALUES (124, 1);

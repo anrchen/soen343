@@ -25,8 +25,8 @@ include_once 'RoomCatalog.php';
         }
 
         public function addRoom($roomNumber, $time, $user, $description){
-            $room = $this->roomCatalog->getRoom($roomNumber);
-            $this->session->makeNewRoom($room, $time, $user, $description);
+//            $room = $this->roomCatalog->getRoom($roomNumber);
+            $this->session->makeNewRoom($roomNumber, $time, $user, $description);
         }
 
         public function endRoomEntry(){
@@ -41,7 +41,7 @@ include_once 'RoomCatalog.php';
             $this->session->modifyReservation($reservationId, $newDescription);
         }
 
-        public function getAllRoom(){
+        public function getAllRoomNumber(){
             return $this->roomCatalog->getAllRoomNumbers();
         }
 

@@ -7,5 +7,6 @@
     $console = new Console($catalog, $session, $roomCatalog);
 
     $roomCatalog->updateCatalogObject();
-    $roomNumber = $console->getAllRoom();
+    $roomNumber = $console->getAllRoomNumber();
+
 ?>

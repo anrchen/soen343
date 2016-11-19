@@ -15,10 +15,10 @@
     $result = $catalog->querySuccess();
 
 
-    if($result == ""){
-        header('Location: ' . 'booking.php?valid=false&action=modify');
-    }
-    else {
-        header('Location: ' . 'booking.php?valid=true&action=modify');
-    }
+//    if($result == ""){
+//        header('Location: ' . 'booking.php?valid=false&action=modify');
+//    }
+//    else {
+//        header('Location: ' . 'booking.php?valid=true&action=modify');
+//    }
 ?>

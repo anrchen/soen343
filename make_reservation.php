@@ -48,7 +48,7 @@
     <?php
     //    $rooms = array("H908", "H432", "H843", "H123", "H732", "H320");
         include_once ('action_viewRooms.php');
-        var_dump($roomNumber);
+//        var_dump($roomNumber);
     ?>
 
     <form action="action_makeReservation.php" name="makeReservationForm" onsubmit="return validateForm();">
