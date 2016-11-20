@@ -55,6 +55,7 @@
             }
         }
 
+        // Fetch all reservations by a given user
         public function updateCatalogByUser($user){
             $con = new Connection();
             $sql = "SELECT * FROM reservation
@@ -75,6 +76,7 @@
             }
         }
 
+        // Fetch all reservations
         public function updateCatalogObject(){
             $con = new Connection();
             $sql = "SELECT * FROM reservation
@@ -94,11 +96,17 @@
             }
         }
 
+        // Fetch all reservations, that are not on the waitlists, by a given date
         public function updateCatalogByDate ($date){
             $con = new Connection();
-            $sql = "SELECT * FROM reservation
-                    INNER JOIN timeslot ON reservation.id = timeslot.ReservationID
-                    WHERE date='$date'";
+            $sql = "SELECT * FROM WaitList
+                    RIGHT JOIN (
+                        Reservation
+                        INNER JOIN timeslot ON Reservation.id = timeslot.ReservationID
+                    ) 
+                    ON WaitList.ReservationID=Reservation.id
+                    WHERE WaitList.ReservationID IS NULL and
+                    TimeSlot.date = '$date'";
             $con->setQuery($sql);
             $con->executeQuery();
             $result = $con->getResult();

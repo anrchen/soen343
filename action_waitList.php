@@ -8,11 +8,11 @@
     $catalog = new ReservationCatalog();
     $session = new ReservationSession($catalog);
     $roomCatalog = new RoomCatalog();
-    $console = new Console($catalog,$session,$roomCatalog);
-
     $wait = new WaitList();
-    $wait->addReservation($_SESSION['reservation']);
-    $wait->updateDB();
+    $console = new Console($catalog,$session,$roomCatalog,$wait);
+
+    $console->addReservationToWaitList($_SESSION['reservation']);
+    $console->updateWaitList();
 
     header('Location: ' . 'booking.php?valid=true&action=add');
 ?>
