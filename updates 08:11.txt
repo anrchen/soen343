@@ -1,8 +1,0 @@
-Updates to complete as of november 8th:
-All are fairly minor changes.
-
-1: Use case models need to be updated (names do not match with other files).
-2: There are missing state diagrams for critical use cases (modify & view bookings).
-3: The class diagram should have a relation between console and roomCatalog (as hinted by cc).
-4: In SSD_UC8, the function modifyReservation is missing it's parenthesis at the end(should be modifyReservation()).
-5: We are missing some system contracts (I think).
