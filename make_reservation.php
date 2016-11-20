@@ -76,7 +76,7 @@
                 <div class="col-lg-4">
                     <label for="sel1">Select a room:</label>
                     <select class="form-control" id="Room" name="roomNumber" onchange="lockRoom(this)">
-                        <option value="">Select Room</option>
+                        <option value="" selected disabled>Select Room</option>
                         <?php
                             foreach($roomNumber as $room){
                                 echo '<option value="' . $room . '">' . $room . "</option>";
@@ -117,7 +117,7 @@
 
             <a href="booking.php">Return to main page</a>
 			
-			<div id="content">bird</div>
+			<div id="content"></div>
         </div>
     </form>
 </body>

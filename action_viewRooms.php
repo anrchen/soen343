@@ -7,7 +7,6 @@
     $wait = new WaitList();
     $console = new Console($session, $roomCatalog, $wait);
 
-    $roomCatalog->updateCatalogObject();
     $roomNumber = $console->getAllRoomNumber();
 
 ?>
