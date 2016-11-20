@@ -8,24 +8,14 @@ include_once 'WaitList.php';
     Class Console
     {
         private $session;
-        private $catalog;
         private $roomCatalog;
         private $waitList;
 
-        public function __construct(ReservationCatalog $catalog, ReservationSession $session, RoomCatalog $roomCatalog,
-                                    WaitList $waitList)
+        public function __construct(ReservationSession $session, RoomCatalog $roomCatalog, WaitList $waitList)
         {
-            $this->catalog = $catalog;
             $this->session = $session;
             $this->roomCatalog = $roomCatalog;
             $this->waitList = $waitList;
-        }
-
-        public function makeNewRoomEntry(Student $student, ReservationCatalog $catalog)
-        {
-            $this->catalog = $catalog;
-            $this->session = new ReservationSession($this->catalog);
-            $this->session->initiateRoomEntrySession($student, $catalog);
         }
 
         public function addReservation($roomNumber, $time, $user, $description){

@@ -9,9 +9,10 @@ include_once (__DIR__.'/Reservation.php');
 
         public function __construct()
         {
-
+            $this->updateCatalogObject();
         }
 
+        // Populating the Room objects that are not in the waiting list
         public function updateCatalogObject(){
             $con = new Connection();
             $sql = "SELECT * FROM Room
@@ -30,30 +31,6 @@ include_once (__DIR__.'/Reservation.php');
                 }
             }
         }
-//        public function updateCatalogObject(){
-//            $con = new Connection();
-//            $sql = "SELECT * FROM room
-//                    INNER JOIN Reservation
-//                    ON Reservation.roomID=room.roomNumber
-//                    INNER JOIN WaitList
-//                    On WaitList.ReservationID=Reservation.id
-//                    INNER JOIN timeSlot
-//                    On timeSlot.ReservationID=Reservation.id";
-//            $con->setQuery($sql);
-//            $con->executeQuery();
-//            $result = $con->getResult();
-//
-//            if ($result->num_rows > 0) {
-//                // output data
-//                while($row = $result->fetch_assoc()) {
-//                    $timeSlot = new TimeSlot($row["StartTime"],$row["EndTime"]);
-//                    $reservation = new Reservation($row["roomNumber"], $timeSlot, $row["loginID"], $row["description"]);
-//                    $waitList = new WaitList();
-//                    $room = new Room($row["roomNumber"]);
-//                    array_push($this->rooms, $room);
-//                }
-//            }
-//        }
 
         public function getRoom($roomNumber){
             foreach($this->rooms as $room){
@@ -71,25 +48,27 @@ include_once (__DIR__.'/Reservation.php');
             return $roomNumber;
         }
 
-        /*
-        public function addNewRoom($roomNumber){
-            $room = new Room($roomNumber);
-            array_push($this->rooms, $room);
-        }
 
         public function display(){
             echo "Displaying the room catalog<br>";
-            for ($i = 0; $i < sizeof($this->rooms); $i++){
+            for ($i = 0; $i < sizeof($this->rooms); $i++) {
                 $this->rooms[$i]->display();
             }
         }
-        */
 
+        // Since one user is only allowed to use one session at a time, once the user has
+        // reservation his room, any room (although number of room should only be one) locked
+        // by this user should be released.
         public function unlockRoom($user){
             $con = new Connection();
             $sql = "DELETE FROM RoomLock WHERE userName='$user'";
             $con->setQuery($sql);
             $this->valid = $con->executeQuery();
+        }
+
+        public function lockRoom($roomNumber, $username){
+            $room = $this->getRoom($roomNumber);
+            $room->lockRoom($roomNumber, $username);
         }
 
     }

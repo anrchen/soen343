@@ -3,6 +3,14 @@
         var_dump($_SESSION['reservation']);
 //        header('Location: ' . 'booking.php?valid=false&action=drop');
     }
+    include_once ('action_lockRoom.php');
+
+//    function lockRoom($value){
+//        $_SESSION['lock']=$value;
+//        echo 'it is done '.$value;
+//
+//        include_once ('action_lockRoom.php');
+//    }
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +75,7 @@
             <div class="row" style="margin-top: 30px;">
                 <div class="col-lg-4">
                     <label for="sel1">Select a room:</label>
-                    <select class="form-control" id="Room" name="roomNumber">
+                    <select class="form-control" id="Room" name="roomNumber" onchange="lockRoom(this)">
                         <option value="">Select Room</option>
                         <?php
                             foreach($roomNumber as $room){
@@ -132,6 +140,8 @@
 
 <!--Bootstrap js-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="lockRoom.js"></script>
 
 </body>
 </html>

@@ -5,7 +5,7 @@
     $roomCatalog = new RoomCatalog();
     $session = new ReservationSession($catalog);
     $wait = new WaitList();
-    $console = new Console($catalog, $session, $roomCatalog, $wait);
+    $console = new Console($session, $roomCatalog, $wait);
 
     $roomCatalog->updateCatalogObject();
     $roomNumber = $console->getAllRoomNumber();

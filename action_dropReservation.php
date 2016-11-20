@@ -9,7 +9,7 @@
     $catalog = new ReservationCatalog();
     $session = new ReservationSession($catalog);
     $wait = new WaitList();
-    $console = new Console($catalog, $session, $roomCatalog,$wait);
+    $console = new Console($session, $roomCatalog, $wait);
 
     $console->dropReservation($reservationDrop);
     echo $reservationDrop;

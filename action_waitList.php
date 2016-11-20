@@ -9,7 +9,7 @@
     $session = new ReservationSession($catalog);
     $roomCatalog = new RoomCatalog();
     $wait = new WaitList();
-    $console = new Console($catalog,$session,$roomCatalog,$wait);
+    $console = new Console($session, $roomCatalog, $wait);
 
     $console->addReservationToWaitList($_SESSION['reservation']);
     $console->updateWaitList();
