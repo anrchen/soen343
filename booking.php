@@ -26,7 +26,6 @@
                 <nav>
                     <?php
                         session_start();
-                    $_SESSION['login_user']='chen';
                         if(isset($_SESSION['login_user'])){
                             echo"
                                 <a href=\"index.php\">Log out</a>
