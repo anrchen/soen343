@@ -116,6 +116,8 @@
             <br/><br/>
 
             <a href="booking.php">Return to main page</a>
+			
+			<div id="content">bird</div>
         </div>
     </form>
 </body>

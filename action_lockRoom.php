@@ -1,6 +1,11 @@
 <?php
-    echo 'Getting from action<br>Here is POST';
-    var_dump($_POST);
+    echo 'Getting from action<br>';
+
+	if(isset($_GET['room'])){
+		echo $room = $_GET['room']; 
+	} 
+	
+	var_dump($_GET);
 
 // Hard coding for now
 $_POST["Room"]='H432';

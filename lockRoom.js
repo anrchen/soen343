@@ -1,16 +1,15 @@
 function lockRoom(room){
-    var i = room.selectedIndex;
-
-    if (i != -1) {
-        document.getElementById("Room").value = room.options[i].text;
-        alert (room.options[i].text);
-        $.ajax({
-            type: "POST",
-            url: "/make_reservation.php",
-            data: { Room: room.options[i].text},
-            success:function(data){
-                alert('successful');
-            }
-        });
-    }
-}
+	var index = room.selectedIndex;
+	var roomSelected = room.options[index].text;
+	console.log(roomSelected);
+	
+	$.ajax({
+		url: 'action_lockRoom.php',
+		data: 'room='+roomSelected,
+		success: function(data){
+			$('#content').html(data);			
+		}
+	})
+	
+	console.log(roomSelected);
+};
