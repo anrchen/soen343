@@ -13,7 +13,6 @@
     $date = $_GET['date'];
 
     $catalog = new ReservationCatalog();
-    $catalog->updateCatalogObject();
     $roomCatalog = new RoomCatalog();
     $session = new ReservationSession($catalog);
     $console = new Console($catalog,$session, $roomCatalog);

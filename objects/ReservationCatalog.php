@@ -134,7 +134,27 @@
         }
 
         public function getConflict($reservation){
-            foreach ($this->reservations as $r){
+            $reservations=array();
+
+            $con = new Connection();
+            $sql = "SELECT * FROM reservation
+                    INNER JOIN timeslot ON reservation.id = timeslot.ReservationID";
+            $con->setQuery($sql);
+            $con->executeQuery();
+            $result = $con->getResult();
+
+            if ($result->num_rows > 0) {
+                // output data
+                while($row = $result->fetch_assoc()) {
+                    $timeSlot = new TimeSlot($row["StartTime"],$row["EndTime"],$row["date"]);
+                    $reserve = new Reservation($row["roomID"],$timeSlot,$row["loginID"],$row["description"]);
+                    $reserve->setID($row["id"]);
+                    array_push($reservations, $reserve);
+                }
+            }
+            $con->close();
+
+            foreach ($reservations as $r){
                 if($r->getTimeSlot()->getDate() == $reservation->getTimeSlot()->getDate()
                     and $r->getRoom()==$reservation->getRoom()){
                     if(($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
