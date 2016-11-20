@@ -56,6 +56,17 @@ CREATE TABLE WaitList(
     ON UPDATE CASCADE
 );
 
+CREATE TABLE RoomLock(
+  lockRoom VARCHAR(10) NOT NULL,
+  userName VARCHAR(25) NOT NULL,
+  FOREIGN KEY(lockRoom) REFERENCES Room(roomNumber)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY(userName) REFERENCES login(userName)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
+
 /**ALTER FUNCTIONS**/
 INSERT INTO Login (username, password)
 VALUES('chen','abc'),

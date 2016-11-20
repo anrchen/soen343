@@ -14,5 +14,7 @@
     $console->addReservationToWaitList($_SESSION['reservation']);
     $console->updateWaitList();
 
+    $roomCatalog->unlockRoom($_SESSION['login_user']);
+
     header('Location: ' . 'booking.php?valid=true&action=add');
 ?>

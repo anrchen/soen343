@@ -14,7 +14,10 @@ include_once (__DIR__.'/Reservation.php');
 
         public function updateCatalogObject(){
             $con = new Connection();
-            $sql = "SELECT * FROM room";
+            $sql = "SELECT * FROM Room
+                    LEFT JOIN RoomLock
+                    ON Room.roomNumber=RoomLock.lockRoom
+                    WHERE lockRoom IS NULL";
             $con->setQuery($sql);
             $con->executeQuery();
             $result = $con->getResult();
@@ -81,6 +84,13 @@ include_once (__DIR__.'/Reservation.php');
             }
         }
         */
+
+        public function unlockRoom($user){
+            $con = new Connection();
+            $sql = "DELETE FROM RoomLock WHERE userName='$user'";
+            $con->setQuery($sql);
+            $this->valid = $con->executeQuery();
+        }
 
     }
 

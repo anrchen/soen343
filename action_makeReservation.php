@@ -26,6 +26,7 @@
 
     if($result==''){
         $catalog->updateDB();
+        $roomCatalog->unlockRoom($user);
         header('Location: ' . 'booking.php?valid=true&action=add');
     }else{
         $_SESSION['reservation']=$catalog->getTempReservation();
