@@ -20,7 +20,7 @@ class WaitList{
             // if $noConflict is true, then there is no time conflict
             $noConflict=($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
             || ($r->getTimeSlot()->getEnd() <= $reservation->getTimeSlot()->getStart());
-//            echo "noCOnclit is ".$noConflict;
+
             if($r->getRoom()==$reservation->getRoom()
                 and $r->getTimeSlot()->getDate()==$reservation->getTimeSlot()->getDate()
                 and !$noConflict
@@ -92,7 +92,6 @@ class WaitList{
         }
     }
 
-
     // Removed the Reservation from the array;
     public function proceedNextReservation($reservationID){
         $catalog = new ReservationCatalog();
@@ -101,6 +100,7 @@ class WaitList{
 //        $reservation->display();
 
         foreach ($this->reservations as $r){
+            echo '<br>Proceeding the reservation'.$r->getID();
             // if $noConflict is true, then there is no time conflict
             $noConflict=($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
                 || ($r->getTimeSlot()->getEnd() <= $reservation->getTimeSlot()->getStart());
@@ -110,21 +110,70 @@ class WaitList{
                 and !$noConflict
             ){ // if there is a time conflict, then do this:
                 $this->ranking[$r->getID()]-=1;
+                echo '<br>Moving the ranking...';
+                echo 'Ranking changed to '.$this->ranking[$r->getID()];
+                if($this->ranking[$r->getID()]==0){
+                    $this->removeUserSameTimeslot($r->getID());
+                }
             }
         }
-
-
-//        $flipped_ranking = array_flip($this->ranking);
-//        $reservationID=$flipped_ranking['1'];
-//        array_splice($this->ranking, 1, 2);
-//        foreach ($this->reservations as $key => $reservation){
-//            if($reservation->getID()==$reservationID){
-//                unset($this->reservations[$key]);
-//                return $reservation;
-//            }
-//        }
-
     }
+
+    public function proceedAfterReservation($reservationID){
+        $catalog = new ReservationCatalog();
+        $catalog->updateCatalogObject();
+        $reservation=$catalog->getReservation($reservationID);
+//        $reservation->display();
+
+        foreach ($this->reservations as $r){
+            echo '<br>After moving the reservation'.$reservationID.' We check ranking again'.$r->getID();
+            // if $noConflict is true, then there is no time conflict
+            $noConflict=($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
+                || ($r->getTimeSlot()->getEnd() <= $reservation->getTimeSlot()->getStart());
+
+            if($r->getRoom()==$reservation->getRoom()
+                and $r->getTimeSlot()->getDate()==$reservation->getTimeSlot()->getDate()
+                and !$noConflict and $this->ranking[$r->getID()]<$this->ranking[$reservation->getID()]
+            ){ // if there is a time conflict, then do this:
+                echo '<br>Moving the ranking...';
+                echo 'Ranking changed to '.$this->ranking[$r->getID()];
+                $this->ranking[$r->getID()]-=1;
+            }
+        }
+    }
+
+    // An user may put himself/herself multiple reservations on the same timeslot, however, once one
+    // of his reservations is proceeded, the other ones (from the same timeslot) will be removed.
+    public function removeUserSameTimeslot($reservationID){
+        $catalog = new ReservationCatalog();
+        $catalog->updateCatalogObject();
+        $reservation=$catalog->getReservation($reservationID);
+        echo 'This is '.$reservationID.' on ranking 0, so checking if we should remove other 
+        reservations from the same user';
+        foreach ($this->reservations as $r){
+            echo "<br><br>Checking for ".$r->getID()."<br><br>";
+            // if $noConflict is true, then there is no time conflict
+            $noConflict=($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
+                || ($r->getTimeSlot()->getEnd() <= $reservation->getTimeSlot()->getStart());
+
+            if($r->getTimeSlot()->getDate()==$reservation->getTimeSlot()->getDate()
+                and !$noConflict
+                and $r->getUser()==$reservation->getUser()
+            ){
+                echo 'Setting ranking to 0, so he is not in Waiting list';
+                $this->ranking[$r->getID()]=0;
+                $this->proceedAfterReservation($r->getID());
+                $catalog->dropReservation($r->getID());
+                echo 'Just dropped '.$r->getID();
+            }
+        }
+//
+//        $con = new Connection();
+//        $sql='DELETE FROM waitlist';
+//        $con->setQuery($sql);
+//        $con->executeQuery();
+    }
+
 }
 
 ?>

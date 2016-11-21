@@ -214,7 +214,6 @@
         }
 
         public function getReservation($reservationID){
-//            $this->display();
 
             foreach($this->reservations as $reservation){
                 if($reservation->getID()==$reservationID){

@@ -58,6 +58,10 @@ include_once 'WaitList.php';
             $this->waitList->proceedNextReservation($reservationID);
         }
 
+        public function removeUserSameTimeslot($reservationID){
+            $this->waitList->removeUserSameTimeslot($reservationID);
+        }
+
     }
 
 
