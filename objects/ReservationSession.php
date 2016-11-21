@@ -9,10 +9,8 @@
             $this->catalog= $catalog;
         }
 
-        public function initiateRoomEntrySession(Student $student, ReservationCatalog $catalog){
+        public function initiateReservationSession(){
             $this->isComplete = false;
-            // Testing: TBD / To be deleted
-            echo "Initializing Room entry session";
         }
 
         public function makeNewReservation($roomNumber, $time, $user, $description){
@@ -33,7 +31,6 @@
 
         public function becomeComplete(){
             $this->isComplete=true;
-            echo "Session completed";
         }
 }
 

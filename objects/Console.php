@@ -19,8 +19,15 @@ include_once 'WaitList.php';
         }
 
         public function addReservation($roomNumber, $time, $user, $description){
-//            $room = $this->roomCatalog->getRoom($roomNumber);
             return $this->session->makeNewReservation($roomNumber, $time, $user, $description);
+        }
+
+        public function initiateReservationSession(){
+            $this->session->initiateReservationSession();
+        }
+
+        public function endReservationSession(){
+            $this->session->becomeComplete();
         }
 
         public function endRoomEntry(){

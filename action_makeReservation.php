@@ -17,12 +17,13 @@
     $session = new ReservationSession($catalog);
     $wait = new WaitList();
 
-    $console = new Console($session, $roomCatalog, $wait);
 
+    $console = new Console($session, $roomCatalog, $wait);
     $timeslot = new TimeSlot($startTime,$endTime, $date);
 
+    $console->initiateReservationSession();
     $result = $console->addReservation($roomNumber,$timeslot,$user,$description); //returns true if query was success, false if not
-
+    $console->endReservationSession();
 
     if($result==''){
         $catalog->updateDB();
