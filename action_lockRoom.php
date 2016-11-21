@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     if(isset($_GET["room"])){
         include_once ('objects/RoomCatalog.php');
