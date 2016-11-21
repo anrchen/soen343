@@ -7,8 +7,9 @@
 
     $roomCatalog = new RoomCatalog();
     $catalog = new ReservationCatalog();
+	$waitlist = new WaitList();
     $session = new ReservationSession($catalog);
-    $console = new Console($session, $roomCatalog,);
+    $console = new Console($session, $roomCatalog, $waitlist);
 
     $catalog->updateCatalogByUser($_SESSION['login_user']);
     $console->modifyReservation($reservationModify, $newDescription);
