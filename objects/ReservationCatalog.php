@@ -23,10 +23,10 @@
         }
 
         public function modifyReservation($reservationId, $newDescription){
-            var_dump($this->reservations);
+//            var_dump($this->reservations);
             foreach($this->reservations as $reservation){
-                echo $reservation->getID() . 'nice';
-                echo $reservationId;
+//                echo $reservation->getID() . 'nice';
+//                echo $reservationId;
                 if($reservation->getID() == $reservationId){
                     $reservation->modifyReservation($newDescription);
                 }
@@ -206,6 +206,16 @@
             $con->close();
 
             return $this->tempReservation;
+        }
+
+        public function getReservation($reservationID){
+//            $this->display();
+
+            foreach($this->reservations as $reservation){
+                if($reservation->getID()==$reservationID){
+                    return $reservation;
+                }
+            }
         }
 
 

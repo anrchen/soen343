@@ -20,7 +20,7 @@ class WaitList{
             // if $noConflict is true, then there is no time conflict
             $noConflict=($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
             || ($r->getTimeSlot()->getEnd() <= $reservation->getTimeSlot()->getStart());
-            echo "noCOnclit is ".$noConflict;
+//            echo "noCOnclit is ".$noConflict;
             if($r->getRoom()==$reservation->getRoom()
                 and $r->getTimeSlot()->getDate()==$reservation->getTimeSlot()->getDate()
                 and !$noConflict
@@ -66,13 +66,16 @@ class WaitList{
 
         foreach ($this->reservations as $reservation){
             $position = $this->ranking[$reservation->getID()];
-            $id = $reservation->getID();
-            echo 'Ranking is '.$this->ranking[$reservation->getID()];
-            $sql = "INSERT INTO waitlist (position,ReservationID)
+            if($position!=0){
+                $id = $reservation->getID();
+                echo 'Ranking is '.$this->ranking[$reservation->getID()];
+                $sql = "INSERT INTO waitlist (position,ReservationID)
                       VALUES ($position, $id)";
-            echo '<br>SQL is '.$sql;
-            $con->setQuery($sql);
-            $con->executeQuery();
+                echo '<br>SQL is '.$sql;
+                $con->setQuery($sql);
+                $con->executeQuery();
+            }
+
         }
 
 
@@ -91,16 +94,35 @@ class WaitList{
 
 
     // Removed the Reservation from the array;
-    public function nextReservation(){
-        $flipped_ranking = array_flip($this->ranking);
-        $reservationID=$flipped_ranking['2'];
-        array_splice($this->ranking, 1, 2);
-        foreach ($this->reservations as $key => $reservation){
-            if($reservation->getID()==$reservationID){
-                unset($this->reservations[$key]);
-                return $reservation;
+    public function proceedNextReservation($reservationID){
+        $catalog = new ReservationCatalog();
+        $catalog->updateCatalogObject();
+        $reservation=$catalog->getReservation($reservationID);
+//        $reservation->display();
+
+        foreach ($this->reservations as $r){
+            // if $noConflict is true, then there is no time conflict
+            $noConflict=($r->getTimeSlot()->getStart() >= $reservation->getTimeSlot()->getEnd())
+                || ($r->getTimeSlot()->getEnd() <= $reservation->getTimeSlot()->getStart());
+
+            if($r->getRoom()==$reservation->getRoom()
+                and $r->getTimeSlot()->getDate()==$reservation->getTimeSlot()->getDate()
+                and !$noConflict
+            ){ // if there is a time conflict, then do this:
+                $this->ranking[$r->getID()]-=1;
             }
         }
+
+
+//        $flipped_ranking = array_flip($this->ranking);
+//        $reservationID=$flipped_ranking['1'];
+//        array_splice($this->ranking, 1, 2);
+//        foreach ($this->reservations as $key => $reservation){
+//            if($reservation->getID()==$reservationID){
+//                unset($this->reservations[$key]);
+//                return $reservation;
+//            }
+//        }
 
     }
 }

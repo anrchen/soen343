@@ -54,6 +54,10 @@ include_once 'WaitList.php';
             $this->waitList->updateDB();
         }
 
+        public function proceedNextReservation($reservationID){
+            $this->waitList->proceedNextReservation($reservationID);
+        }
+
     }
 
 

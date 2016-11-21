@@ -7,10 +7,13 @@
 
     $roomCatalog = new RoomCatalog();
     $catalog = new ReservationCatalog();
+    $catalog->updateCatalogObject();
     $session = new ReservationSession($catalog);
     $wait = new WaitList();
     $console = new Console($session, $roomCatalog, $wait);
 
+    $console->proceedNextReservation($reservationDrop);
+    $console->updateWaitList();
     $console->dropReservation($reservationDrop);
     echo $reservationDrop;
 
