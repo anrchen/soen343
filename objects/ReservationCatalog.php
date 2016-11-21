@@ -145,8 +145,13 @@
             $reservations=array();
 
             $con = new Connection();
-            $sql = "SELECT * FROM reservation
-                    INNER JOIN timeslot ON reservation.id = timeslot.ReservationID";
+            $sql = "SELECT * FROM WaitList
+                    RIGHT JOIN (
+                        Reservation
+                        INNER JOIN timeslot ON Reservation.id = timeslot.ReservationID
+                    ) 
+                    ON WaitList.ReservationID=Reservation.id
+                    WHERE WaitList.ReservationID IS NULL";
             $con->setQuery($sql);
             $con->executeQuery();
             $result = $con->getResult();
