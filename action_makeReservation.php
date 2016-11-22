@@ -12,17 +12,14 @@
     $user = $_SESSION['login_user'];
     $date = $_GET['date'];
 
-    $catalog = new ReservationCatalog();
     $roomCatalog = new RoomCatalog();
-    $session = new ReservationSession($catalog);
-    $wait = new WaitList();
-    $wait->updateWaitListObject();
-
-
-    $console = new Console($session, $roomCatalog, $wait);
+    $waitList = new WaitList();	
+	$console = new Console($roomCatalog, $waitList);
+    $catalog = new ReservationCatalog();
     $timeslot = new TimeSlot($startTime,$endTime, $date);
-
-    $console->initiateReservationSession();
+	
+    $console->initiateReservationSession($catalog);	
+    $waitList->updateWaitListObject();
     $result = $console->addReservation($roomNumber,$timeslot,$user,$description); //returns true if query was success, false if not
     $console->endReservationSession();
 

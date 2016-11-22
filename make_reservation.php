@@ -1,4 +1,5 @@
 <?php
+	
     if(isset($_GET['deleteOld'])){
         var_dump($_SESSION['reservation']);
 //        header('Location: ' . 'booking.php?valid=false&action=drop');
