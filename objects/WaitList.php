@@ -57,6 +57,28 @@ class WaitList{
         }
     }
 
+    public function updateWaitListByUser($user){
+        $con = new Connection();
+        $sql = "SELECT * FROM reservation
+                    INNER JOIN timeslot ON reservation.id = timeslot.ReservationID
+                    INNER JOIN waitList ON reservation.id = waitList.ReservationID
+                    WHERE reservation.loginID='$user'";
+        $con->setQuery($sql);
+        $con->executeQuery();
+        $result = $con->getResult();
+
+        if ($result->num_rows > 0) {
+            // output data
+            while($row = $result->fetch_assoc()) {
+                $timeSlot = new TimeSlot($row["StartTime"],$row["EndTime"],$row["date"]);
+                $reservation = new Reservation($row["roomID"],$timeSlot,$row["loginID"],$row["description"]);
+                $reservation->setID($row["id"]);
+                array_push($this->reservations, $reservation);
+                $this->ranking[$reservation->getID()]=$row["position"];
+            }
+        }
+    }
+
     public function updateDB(){
         // Updating reservation table's data
         $con = new Connection();
@@ -171,11 +193,22 @@ class WaitList{
                 echo 'Just dropped '.$r->getID();
             }
         }
-//
-//        $con = new Connection();
-//        $sql='DELETE FROM waitlist';
-//        $con->setQuery($sql);
-//        $con->executeQuery();
+    }
+
+
+    public function getCalendar(){
+        $reservations = array();
+        for ($i = 0; $i < sizeof($this->reservations); $i++){
+            $reservation = array("room"=>$this->reservations[$i]->getRoom(),
+                "start_time"=>$this->reservations[$i]->getTimeSlot()->getStart(),
+                "end_time"=>$this->reservations[$i]->getTimeSlot()->getEnd(),
+                "username"=>$this->reservations[$i]->getUser(),
+                "description"=>$this->reservations[$i]->getDescription(),
+                "date"=>$this->reservations[$i]->getTimeSlot()->getDate(),
+                "id"=>$this->reservations[$i]->getID());
+            array_push($reservations, $reservation);
+        }
+        return $reservations;
     }
 
 }

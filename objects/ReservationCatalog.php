@@ -23,10 +23,7 @@
         }
 
         public function modifyReservation($reservationId, $newDescription){
-//            var_dump($this->reservations);
             foreach($this->reservations as $reservation){
-//                echo $reservation->getID() . 'nice';
-//                echo $reservationId;
                 if($reservation->getID() == $reservationId){
                     $reservation->modifyReservation($newDescription);
                 }
@@ -58,9 +55,14 @@
         // Fetch all reservations by a given user
         public function updateCatalogByUser($user){
             $con = new Connection();
-            $sql = "SELECT * FROM reservation
-                    INNER JOIN timeslot ON reservation.id = timeslot.ReservationID
-                    WHERE loginID='$user'";
+            $sql = "SELECT * FROM WaitList
+                    RIGHT JOIN (
+                        Reservation
+                        INNER JOIN timeslot ON Reservation.id = timeslot.ReservationID
+                    ) 
+                    ON WaitList.ReservationID=Reservation.id
+                    WHERE WaitList.ReservationID IS NULL and
+                    Reservation.loginID='$user'";
             $con->setQuery($sql);
             $con->executeQuery();
             $result = $con->getResult();
