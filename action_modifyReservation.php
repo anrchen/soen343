@@ -8,6 +8,7 @@
     $roomCatalog = new RoomCatalog();
     $catalog = new ReservationCatalog();
 	$waitlist = new WaitList();
+    $waitlist->updateWaitListObject();
     $session = new ReservationSession($catalog);
     $console = new Console($session, $roomCatalog, $waitlist);
 

@@ -11,7 +11,6 @@ class WaitList{
 
     public function __construct()
     {
-        $this->updateWaitListObject();
     }
 
     public function addReservation($reservation){
