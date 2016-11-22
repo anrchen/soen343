@@ -42,10 +42,27 @@ function validateForm(){
         document.getElementById('EndTime').style.borderColor = "red";
         bool = false;
     }
+	
+	var startInt = parseInt(start);
+	var endInt = parseInt(end);
 
+	if(endInt - startInt <= 0){
+		display = display + "<li>Start to end form is invalid</li>";
+		document.getElementById('StartTime').style.borderColor = "red";
+		document.getElementById('EndTime').style.borderColor = "red";
+		bool = false;
+	}
+	
+	if(endInt - startInt > 3){
+		display = display + "<li>Invalid Timeslot duration (Maximum length: 3 hours)</li>";
+		document.getElementById('StartTime').style.borderColor = "red";
+		document.getElementById('EndTime').style.borderColor = "red";
+		bool = false;
+	}
+	
     display = display + "</ul>";
     document.getElementById('display').innerHTML = display;
-    return bool;
+    return false;
 }
 
 function timePattern(pattern_array, time){
