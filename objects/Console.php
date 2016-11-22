@@ -10,6 +10,7 @@ include_once 'WaitList.php';
         private $session;
         private $roomCatalog;
         private $waitList;
+        private $student;
 
         public function __construct(RoomCatalog $roomCatalog, WaitList $waitList)
         {
@@ -66,6 +67,13 @@ include_once 'WaitList.php';
 			$this->session = updateCatalogByUser($user);
 		}
 
+		public function getUserNumberReservations(){
+            return $this->student->getUserNumberReservations();
+        }
+
+        public function setStudent(Student $student){
+            $this->student=$student;
+        }
     }
 
 
