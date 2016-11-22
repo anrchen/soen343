@@ -119,6 +119,7 @@ class WaitList{
         }
     }
 
+    // After a reservation is removed,
     public function proceedAfterReservation($reservationID){
         $catalog = new ReservationCatalog();
         $catalog->updateCatalogObject();
@@ -133,10 +134,12 @@ class WaitList{
 
             if($r->getRoom()==$reservation->getRoom()
                 and $r->getTimeSlot()->getDate()==$reservation->getTimeSlot()->getDate()
-                and !$noConflict and $this->ranking[$r->getID()]<$this->ranking[$reservation->getID()]
+                and !$noConflict
+                and $this->ranking[$r->getID()]>$this->ranking[$reservation->getID()]
             ){ // if there is a time conflict, then do this:
                 echo '<br>Moving the ranking...';
-                echo 'Ranking changed to '.$this->ranking[$r->getID()];
+                echo '<br>Because '.$r->getID().' has a ranking of '.$this->ranking[$r->getID()];
+                echo '<br>and '.$reservation->getID().' has a ranking of '.$this->ranking[$reservation->getID()];
                 $this->ranking[$r->getID()]-=1;
             }
         }
@@ -148,7 +151,7 @@ class WaitList{
         $catalog = new ReservationCatalog();
         $catalog->updateCatalogObject();
         $reservation=$catalog->getReservation($reservationID);
-        echo 'This is '.$reservationID.' on ranking 0, so checking if we should remove other 
+        echo '<br>This is '.$reservationID.' on ranking 0, so checking if we should remove other 
         reservations from the same user';
         foreach ($this->reservations as $r){
             echo "<br><br>Checking for ".$r->getID()."<br><br>";
@@ -159,10 +162,11 @@ class WaitList{
             if($r->getTimeSlot()->getDate()==$reservation->getTimeSlot()->getDate()
                 and !$noConflict
                 and $r->getUser()==$reservation->getUser()
+                and $r->getID() != $reservationID
             ){
                 echo 'Setting ranking to 0, so he is not in Waiting list';
-                $this->ranking[$r->getID()]=0;
                 $this->proceedAfterReservation($r->getID());
+                $this->ranking[$r->getID()]=0;
                 $catalog->dropReservation($r->getID());
                 echo 'Just dropped '.$r->getID();
             }

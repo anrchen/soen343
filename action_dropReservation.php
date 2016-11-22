@@ -2,10 +2,10 @@
     session_start();
     include_once 'objects/Console.php';
 
-//    $reservationDrop = $_POST['id_reservation_drop'];
-//    $user = $_SESSION['login_user'];
-    $reservationDrop='125';
-    $user='chen';
+    $reservationDrop = $_POST['id_reservation_drop'];
+    $user = $_SESSION['login_user'];
+//    $reservationDrop='123';
+//    $user='chen';
 
     $roomCatalog = new RoomCatalog();
     $catalog = new ReservationCatalog();
@@ -23,9 +23,9 @@
 
     $result = $catalog->querySuccess();
 
-//    if($result == ""){
-//        header('Location: ' . 'booking.php?valid=false&action=drop');
-//    } else {
-//        header('Location: ' . 'booking.php?valid=true&action=drop');
-//    }
+    if($result == ""){
+        header('Location: ' . 'booking.php?valid=false&action=drop');
+    } else {
+        header('Location: ' . 'booking.php?valid=true&action=drop');
+    }
 ?>

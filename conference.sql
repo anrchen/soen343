@@ -78,24 +78,84 @@ INSERT INTO Room(roomNumber)
 VALUES ('H908'),('H432'),('H843'),('H123'),('H732'),('H320');
 
 
+# Test Data set 1
+# INSERT INTO Reservation(id, roomID, loginID, description)
+# VALUES ('123','H432','chen','Delete this');
+#
+# INSERT INTO Reservation(id, roomID, loginID, description)
+# VALUES ('124','H432','adriel','Maybe it is my room!');
+#
+# INSERT INTO Reservation(id, roomID, loginID, description)
+# VALUES ('122','H432','chen','I will be removed soon!');
+#
+# INSERT INTO Reservation(id, roomID, loginID, description)
+# VALUES ('125','H123','chen','Not in wait, drop it!');
+#
+# INSERT INTO Reservation(id, roomID, loginID, description)
+# VALUES ('126','H123','chen','This will appear on View');
+#
+# INSERT INTO Reservation(id, roomID, loginID, description)
+# VALUES ('127','H123','adriel','Move to waitList 1');
+#
+#
+# INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
+# VALUES (59,'10','11','11/19/2016',122);
+# INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
+# VALUES (60,'10','11','11/19/2016',123);
+# INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
+# VALUES (61,'10','11','11/19/2016',124);
+# INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
+# VALUES (62,'10','11','11/19/2016',125);
+# INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
+# VALUES (63,'10','11','11/19/2016',126);
+# INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
+# VALUES (64,'10','11','11/19/2016',127);
+#
+# INSERT INTO WaitList (ReservationID, position)
+# VALUES (122, 1);
+# INSERT INTO WaitList (ReservationID, position)
+# VALUES (123, 3);
+# INSERT INTO WaitList (ReservationID, position)
+# VALUES (124, 2);
+# INSERT INTO WaitList (ReservationID, position)
+# VALUES (126, 1);
+# INSERT INTO WaitList (ReservationID, position)
+# VALUES (127, 2);
+
+# Test Data Set 2
+# INSERT INTO Reservation(id, roomID, loginID, description)
+# VALUES ('123','H432','chen','I m not on wait list');
+#
+# INSERT INTO Reservation(id, roomID, loginID, description)
+# VALUES ('124','H432','adriel','Maybe it is my room!');
+#
+# INSERT INTO Reservation(id, roomID, loginID, description)
+# VALUES ('122','H432','charizard','I will be removed soon!');
+#
+# INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
+# VALUES (59,'10','11','11/19/2016',122);
+# INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
+# VALUES (60,'10','11','11/19/2016',123);
+# INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
+# VALUES (61,'10','11','11/19/2016',124);
+#
+# INSERT INTO WaitList (ReservationID, position)
+# VALUES (122, 1);
+# INSERT INTO WaitList (ReservationID, position)
+# VALUES (124, 2);
+
+# Test Data Set 3
 INSERT INTO Reservation(id, roomID, loginID, description)
-VALUES ('123','H432','chen','Delete this');
+VALUES ('123','H432','chen','I m not on wait list');
 
 INSERT INTO Reservation(id, roomID, loginID, description)
 VALUES ('124','H432','adriel','Maybe it is my room!');
 
 INSERT INTO Reservation(id, roomID, loginID, description)
-VALUES ('122','H432','chen','I will be removed soon!');
+VALUES ('122','H432','charizard','I will be removed soon!');
 
 INSERT INTO Reservation(id, roomID, loginID, description)
-VALUES ('125','H123','chen','Not in wait, drop it!');
-
-INSERT INTO Reservation(id, roomID, loginID, description)
-VALUES ('126','H123','chen','This will appear on View');
-
-INSERT INTO Reservation(id, roomID, loginID, description)
-VALUES ('127','H123','adriel','Move to waitList 1');
-
+VALUES ('125','H123','charizard','I will be removed soon!');
 
 INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
 VALUES (59,'10','11','11/19/2016',122);
@@ -104,19 +164,11 @@ VALUES (60,'10','11','11/19/2016',123);
 INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
 VALUES (61,'10','11','11/19/2016',124);
 INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
-VALUES (62,'10','11','11/19/2016',125);
-INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
-VALUES (63,'10','11','11/19/2016',126);
-INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
-VALUES (64,'10','11','11/19/2016',127);
+VALUES (62,'7','11','11/19/2016',125);
 
 INSERT INTO WaitList (ReservationID, position)
 VALUES (122, 1);
 INSERT INTO WaitList (ReservationID, position)
-VALUES (123, 3);
-INSERT INTO WaitList (ReservationID, position)
 VALUES (124, 2);
 INSERT INTO WaitList (ReservationID, position)
-VALUES (126, 1);
-INSERT INTO WaitList (ReservationID, position)
-VALUES (127, 2);
+VALUES (125, 1);
