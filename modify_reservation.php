@@ -90,7 +90,30 @@
         }
             echo '<button class="btn btn-default btn-md" data-toggle="modal" 
                   data-target="#modal">Modify</button>';
+
+        echo "<h3>The following reservations are on the waiting list</h3>";
+
+        foreach($waitList_reservation as $waitList){
+
+            $id = $waitList['id'];
+            $descp = $waitList['description'];
+            $room = $waitList['room'];
+            $time = $waitList['start_time'] . ' - ' . $waitList['end_time'];
+            $date = $waitList['date'];
+
+            echo '<h5><strong><i>Reservation ' . $id . '</i></strong></h5>';
+
+            echo '<div id="display">';
+
+            echo '<p>Date: '. $date . ' &#9679; Time: ' . $time .
+                ' &#9679; Room: ' . $room . '</p>';
+
+            echo '<p>Current Description: <br/><span style="margin-left: 20px;"><i>'
+                . $descp . '</i></span></p>';
+            echo '</div>';
+        }
     ?>
+
     <br/><br/>
     <a href="booking.php">Return to main menu</a>
 

@@ -1,6 +1,7 @@
 <?php
     require_once ("objects/functions/function_login_validation.php");
 
+
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -62,7 +63,7 @@
     <title>Room Reservation System</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--FontAwesome-->
@@ -137,7 +138,7 @@
 <!--Bootstrap js-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--Custom js-->
-<script src="assets/js/index_form_validation.js";
+<!--<script src="assets/js/index_form_validation.js";-->
 
 </body>
 </html>

@@ -27,6 +27,7 @@ class Reservation{
         echo "End time: \n". $this->timeSlot->getEnd()."<br>";
     }
 
+
     public function updateDB(){
         // Updating reservation table's data
         $con = new Connection();
@@ -34,7 +35,6 @@ class Reservation{
           VALUES ('$this->roomNumber','$this->user','$this->description')";
         $con->setQuery($sql);
         $con->executeQuery();
-
         // Updating timeslot table's data
         $date = $this->timeSlot->getDate();
         $id = $con->getID();
@@ -47,6 +47,15 @@ class Reservation{
         $con->executeQuery();
 
         $con->close();
+    }
+
+    public function modifyReservation($description){
+        echo $description;
+        echo $this->id;
+        $con = new Connection();
+        $sql = "UPDATE reservation SET description='$description' WHERE id='$this->id'";
+        $con->setQuery($sql);
+        $this->valid = $con->executeQuery();
     }
 
     public function getID(){

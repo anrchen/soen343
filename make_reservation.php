@@ -1,3 +1,18 @@
+<?php
+    if(isset($_GET['deleteOld'])){
+        var_dump($_SESSION['reservation']);
+//        header('Location: ' . 'booking.php?valid=false&action=drop');
+    }
+    include_once ('action_lockRoom.php');
+
+//    function lockRoom($value){
+//        $_SESSION['lock']=$value;
+//        echo 'it is done '.$value;
+//
+//        include_once ('action_lockRoom.php');
+//    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +43,7 @@
 
             <nav>
                 <?php
-                    session_start();
+//                    session_start();
                     if(isset($_SESSION['login_user'])){
                         echo "<a style='color: white'>Logged in as ".$_SESSION['login_user']."</a> 
                                     <a href=\"logout.php\">Log out</a>
@@ -46,7 +61,9 @@
     </header>
 
     <?php
-        $rooms = array("H908", "H432", "H843", "H123", "H732", "H320");
+    //    $rooms = array("H908", "H432", "H843", "H123", "H732", "H320");
+        include_once ('action_viewRooms.php');
+//        var_dump($roomNumber);
     ?>
 
     <form action="action_makeReservation.php" name="makeReservationForm" onsubmit="return validateForm();">
@@ -54,13 +71,14 @@
             <h2>Create a Reservation.<small>Fill in all the fields to add a reservation</small></h2>
             <p id="display"></p>
 
+
             <div class="row" style="margin-top: 30px;">
                 <div class="col-lg-4">
                     <label for="sel1">Select a room:</label>
-                    <select class="form-control" id="Room" name="roomNumber">
-                        <option value="">Select Room</option>
+                    <select class="form-control" id="Room" name="roomNumber" onchange="lockRoom(this)">
+                        <option value="" selected disabled>Select Room</option>
                         <?php
-                            foreach($rooms as $room){
+                            foreach($roomNumber as $room){
                                 echo '<option value="' . $room . '">' . $room . "</option>";
                             }
                         ?>
@@ -98,6 +116,8 @@
             <br/><br/>
 
             <a href="booking.php">Return to main page</a>
+			
+			<div id="content"></div>
         </div>
     </form>
 </body>
@@ -122,6 +142,8 @@
 
 <!--Bootstrap js-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="lockRoom.js"></script>
 
 </body>
 </html>
