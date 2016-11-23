@@ -1,0 +1,132 @@
+/***************************************
+	Main.css
+****************************************/
+
+
+/****************
+ index.php
+ ***************/
+.container h4{
+    color: #E37222;
+    font-weight: 300;
+}
+
+.container .form-group{
+    margin-top: 20px;
+}
+
+.container form .btn-default{
+    color: #E37222;
+}
+
+.container #welcomeTitle{
+    color: #E37222;
+}
+
+
+/****************
+ booking.php
+ ***************/
+#banner{
+	text-align: center;
+	font-size: 40px;
+    background-color: #07889B;
+    color: #fff;
+}
+
+#date{
+    text-align: center;
+}
+
+.container h2 span{
+    color: #5383d3;
+}
+
+
+/**Calendar**/
+table{
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    background-color: #fff;
+}
+
+table td a{
+    color: #000;
+}
+
+table td a:visited{
+    color: #000;
+    text-decoration: none;
+}
+
+table td a:hover{
+    color:aliceblue;
+    transition: 1s;
+    text-decoration: none;
+}
+
+.container th{
+    width:20px;
+    color:#fff;
+    background:#1b1e24;
+    border-bottom:4px solid #9ea7af;
+    border-right: 1px solid #343a45;
+    font-size:18px;
+    font-weight: 100;
+    text-align:center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    vertical-align:middle;
+}
+
+th:first-child {
+    border-top-left-radius:3px;
+}
+
+th:last-child {
+    border-top-right-radius:3px;
+    border-right:none;
+}
+
+tr {
+    border-top: 1px solid #C1C3D1;
+    border-bottom: 1px solid #C1C3D1;
+    color:#666B85;
+    font-size:16px;
+    font-weight:normal;
+    text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+td {
+    color: #000;
+    background:#FFFFFF;
+    padding:20px;
+    text-align:center;
+    vertical-align:middle;
+    font-weight:300;
+    font-size:18px;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #C1C3D1;
+}
+
+tr:nth-child(odd) td {
+    background:#EBEBEB;
+}
+
+/**Footer**/
+
+footer {
+    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    margin-top: 40px;
+    clear: both;
+    width: auto;
+    height: 40px;
+    padding: 10px;
+    border-top: 1px solid #000;
+    text-align: center;
+    color: #000;
+}

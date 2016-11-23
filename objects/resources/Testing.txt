@@ -1,0 +1,23 @@
+Testing - November 23. 2016
+**************************************
+- Log In : Pass
+- Logout : Pass	
+- View Reservation: Pass				             
+- Make Reservation (Constraints)
+	+ Cannot have empty fields : Pass
+	+ Cannot have invalid time syntax: Pass
+	+ Cannot have start time bigger than end time: Pass
+	+ Cannot have more than 3 hours reservation: Pass
+	+ Cannot have more than 5 reservations: Pass
+	Make Reservation feature: Pass
+- Modify Reservation : Pass
+- Next in Waitilist gets the reservation upon cancellation 
+of current reservation : Pass
+- User is removed from all other waitlist in the same 
+timeslots as the one (reservation) given to him: Pass
+- Add to waitlist: Pass
+- When a user has selected a room for reserving, no other
+user has access to the room until termination of the
+current reservation event: Pass
+
+Result: All requirements were fullfilled by the system.
