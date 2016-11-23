@@ -46,5 +46,12 @@
 	} else { 
 		echo 'success';
 	}
+	
+	$connection->close();
+	session_start();
+	include_once('objects/RoomCatalog.php');
+    $roomCatalog = new RoomCatalog();
+    $roomCatalog->unlockRoom($_SESSION['login_user']);
+	
 	header('Location: booking.php');
 ?>
