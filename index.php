@@ -88,7 +88,8 @@
         </div>
     </header>
 
-    <div class="container" style="margin-top:40px;">
+    <div class="container" style="margin-top:40px; text-align: center;">
+        <div style="background: #fff; padding: 30px; box-shadow: 10px 10px 5px #888888;">
         <h2 id="welcomeTitle">Booking System</h2>
 
         <?php
@@ -99,8 +100,10 @@
 
         <form action="index.php" method="post" name="login_form" class="form-horizontal">
 
+
+            <img src="assets/img/simpleAvatar.png" width="150" heigh="150">
             <div class="form-group">
-                <div class="col-lg-1">
+                <div class="col-lg-offset-4 col-lg-1">
                      <label for="input_username">Username</label>
                 </div>
                 <div class="col-lg-3">
@@ -109,7 +112,7 @@
             </div>
 
             <div class="form-group">
-                <div class="col-lg-1">
+                <div class="col-lg-offset-4 col-lg-1">
                     <label for="input_password">Password</label>
                 </div>
                 <div class="col-lg-3">
@@ -117,18 +120,18 @@
                 </div>
             </div>
 
-            <div class="col-lg-offset-3 col-lg-3">
-                <input type="submit" name="submit" class="btn btn-default btn-md" value="Submit">
+            <div class="form-group">
+                <div class="col-lg-offset-6 col-lg-3">
+                    <input type="submit" name="submit" class="btn btn-default btn-md" value="Submit">
+                </div>
             </div>
         </form>
 
-        <?php
-
-        ?>
+      </div>
     </div>
 </body>
 
-<footer>
+<footer style="margin-top: 150px;">
     <p>All rights reserved</p>
 </footer>
 
