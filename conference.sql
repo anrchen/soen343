@@ -70,8 +70,8 @@ CREATE TABLE RoomLock(
 /**ALTER FUNCTIONS**/
 INSERT INTO Login (username, password)
 VALUES('chen','abc'),
-  ('alex', 'skydragon123'),
-  ('saif', 'flamethrower987'),
+  ('alex', 'abc'),
+  ('saif', 'abc'),
   ('adriel', 'abc');
 
 INSERT INTO Room(roomNumber)
@@ -168,9 +168,9 @@ VALUES (60,'10','11','11/23/2016',123);
 INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
 VALUES (61,'10','12','11/23/2016',124);
 INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
-VALUES (62,'7','11','11/23/2016',125);
+VALUES (62,'8','11','11/23/2016',125);
 INSERT INTO TimeSlot(Tid,StartTime,EndTime,date,ReservationID)
-VALUES (63,'7','11','11/23/2016',126);
+VALUES (63,'8','11','11/23/2016',126);
 
 
 INSERT INTO WaitList (ReservationID, position)

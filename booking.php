@@ -140,7 +140,7 @@
                                     $description = $reservation[$j]["description"];
                                     $end_data = (int)$reservation[$j]["end_time"];
                                     $start_data = (int)$reservation[$j]["start_time"];
-                                    $duration = $end_data - $start_data + 1;
+                                    $duration = $end_data - $start_data;
 
                                 }
                             }

@@ -47,9 +47,9 @@
 
         <p style="color: red">Time conflict!</p>
 
-        <p><a href="make_reservation.php?deleteOld=true">Make new reservation</a></p>
-        <p><a href="action_waitList.php">Add reservation to waitlist</a></p>
 
+        <p><a href="action_waitList.php">Add reservation to waitlist</a></p>
+        <p><a href="action_removeRecentReservation.php">Return to main menu</a></p>
 
 </body>
 

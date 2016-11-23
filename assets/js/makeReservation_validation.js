@@ -62,7 +62,7 @@ function validateForm(){
 	
     display = display + "</ul>";
     document.getElementById('display').innerHTML = display;
-    return false;
+    return bool;
 }
 
 function timePattern(pattern_array, time){
