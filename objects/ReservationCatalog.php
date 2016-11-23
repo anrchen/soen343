@@ -23,11 +23,14 @@
         }
 
         public function modifyReservation($reservationId, $newDescription){
+			echo $reservationId;
+
             foreach($this->reservations as $reservation){
-                if($reservation->getID() == $reservationId){
+                if($reservation->getID() == $reservationId){			
                     $reservation->modifyReservation($newDescription);
+					break;
                 }
-                break;
+                
             }
         }
 

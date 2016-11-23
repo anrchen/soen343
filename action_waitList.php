@@ -5,12 +5,13 @@
 
     session_start();
 
-    $catalog = new ReservationCatalog();
-    $session = new ReservationSession($catalog);
     $roomCatalog = new RoomCatalog();
-    $wait = new WaitList();
-    $console = new Console($session, $roomCatalog, $wait);
-
+    $waitList = new WaitList();	
+	$console = new Console($roomCatalog, $waitList);
+    $catalog = new ReservationCatalog();
+	
+	$console->initiateReservationSession($catalog);	
+	$waitList->updateWaitListObject();
     $console->addReservationToWaitList($_SESSION['reservation']);
     $console->updateWaitList();
 

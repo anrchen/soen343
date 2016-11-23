@@ -10,20 +10,20 @@ include_once 'WaitList.php';
         private $session;
         private $roomCatalog;
         private $waitList;
+        private $student;
 
-        public function __construct(ReservationSession $session, RoomCatalog $roomCatalog, WaitList $waitList)
+        public function __construct(RoomCatalog $roomCatalog, WaitList $waitList)
         {
-            $this->session = $session;
-            $this->roomCatalog = $roomCatalog;
-            $this->waitList = $waitList;
+			$this->roomCatalog = $roomCatalog;
+			$this->waitList = $waitList;
         }
 
         public function addReservation($roomNumber, $time, $user, $description){
             return $this->session->makeNewReservation($roomNumber, $time, $user, $description);
         }
 
-        public function initiateReservationSession(){
-            $this->session->initiateReservationSession();
+        public function initiateReservationSession(ReservationCatalog $catalog){
+            $this->session = new ReservationSession($catalog);
         }
 
         public function endReservationSession(){
@@ -61,7 +61,19 @@ include_once 'WaitList.php';
         public function removeUserSameTimeslot($reservationID){
             $this->waitList->removeUserSameTimeslot($reservationID);
         }
+		
+				
+		public function updateCatalogByUser($user){
+			$this->session = updateCatalogByUser($user);
+		}
 
+		public function getUserNumberReservations(){
+            return $this->student->getUserNumberReservations();
+        }
+
+        public function setStudent(Student $student){
+            $this->student=$student;
+        }
     }
 
 

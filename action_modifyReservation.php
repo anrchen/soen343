@@ -8,14 +8,14 @@
     $roomCatalog = new RoomCatalog();
     $catalog = new ReservationCatalog();
 	$waitlist = new WaitList();
+	$console = new Console($roomCatalog, $waitlist);
+	
+	$console->initiateReservationSession($catalog);	
     $waitlist->updateWaitListObject();
-    $session = new ReservationSession($catalog);
-    $console = new Console($session, $roomCatalog, $waitlist);
-
     $catalog->updateCatalogByUser($_SESSION['login_user']);
     $console->modifyReservation($reservationModify, $newDescription);
     $result = $catalog->querySuccess();
-
+    $console->endReservationSession();
 
     if($result == ""){
         header('Location: ' . 'booking.php?valid=false&action=modify');

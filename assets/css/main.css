@@ -116,6 +116,11 @@ tr:nth-child(odd) td {
 /**Footer**/
 
 footer {
+    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
     margin-top: 40px;
     clear: both;
     width: auto;

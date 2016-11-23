@@ -43,18 +43,19 @@
         </nav>
     </div>
 </header>
+    <div class="container" style="text-align: center; margin-top: 50px;">
 
+        <img src="assets/img/warning.png" width="50" height="50">
+        <p style="color: red">Time conflict! The time slot you selected is already reserved by another user.</p>
 
-        <p style="color: red">Time conflict!</p>
-
-        <p><a href="make_reservation.php?deleteOld=true">Make new reservation</a></p>
         <p><a href="action_waitList.php">Add reservation to waitlist</a></p>
-
+        <p><a href="action_removeRecentReservation.php">Return to main menu</a></p>
+    </div>
 
 </body>
 
 
-<footer>
+<footer style="margin-top: 270px;">
     <p>All rights reserved</p>
 </footer>
 

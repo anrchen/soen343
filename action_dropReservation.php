@@ -8,19 +8,16 @@
 //    $user='chen';
 
     $roomCatalog = new RoomCatalog();
+    $waitList = new WaitList();	
+	$console = new Console($roomCatalog, $waitList);
     $catalog = new ReservationCatalog();
-    $catalog->updateCatalogObject();
-    $session = new ReservationSession($catalog);
-    $wait = new WaitList();
-    $wait->updateWaitListObject();
-    $console = new Console($session, $roomCatalog, $wait);
-
+	
+	$console->initiateReservationSession($catalog);
+    $waitList->updateWaitListObject();
     $console->proceedNextReservation($reservationDrop);
-    echo '<br>Removing use from same timeslot<br>';
-//    $console->removeUserSameTimeslot($reservationDrop);
     $console->updateWaitList();
     $console->dropReservation($reservationDrop);
-    echo $reservationDrop;
+    $console->endReservationSession();
 
     $result = $catalog->querySuccess();
 

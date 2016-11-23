@@ -7,11 +7,12 @@
         public function __construct(ReservationCatalog $catalog)
         {
             $this->catalog= $catalog;
+			$this->isComplete = false;
         }
 
-        public function initiateReservationSession(){
-            $this->isComplete = false;
-        }
+ //       public function initiateReservationSession(){
+
+   //     }
 
         public function makeNewReservation($roomNumber, $time, $user, $description){
             if($this->isComplete){
@@ -32,6 +33,10 @@
         public function becomeComplete(){
             $this->isComplete=true;
         }
+		
+		public function updateCatalogByUser($user){
+			$this->catalog = updateCatalogByUser($user);
+		}
 }
 
 ?>

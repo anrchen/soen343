@@ -49,9 +49,9 @@ class Reservation{
         $con->close();
     }
 
-    public function modifyReservation($description){
-        echo $description;
-        echo $this->id;
+    public function modifyReservation($description){						
+ //       echo $description;
+ //       echo $this->id;
         $con = new Connection();
         $sql = "UPDATE reservation SET description='$description' WHERE id='$this->id'";
         $con->setQuery($sql);
